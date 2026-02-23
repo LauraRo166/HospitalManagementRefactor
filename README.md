@@ -29,12 +29,42 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 ## 👥 Team Members
 
-| | Member |
-|---|---|
-| [![AndresSu2342](https://github.com/AndresSu2342.png?size=80)](https://github.com/AndresSu2342) | **César Andrés Borray Suarez** |
-| [![JuanEstebanMedina](https://github.com/JuanEstebanMedina.png?size=80)](https://github.com/JuanEstebanMedina) | **Juan Esteban Medina Rivas** |
-| [![LauraRo166](https://github.com/LauraRo166.png?size=80)](https://github.com/LauraRo166) | **Laura Daniela Rodríguez Sánchez** |
-| [![hakki17](https://github.com/hakki17.png?size=80)](https://github.com/hakki17) | **Maria Paula Sánchez Macías** |
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/AndresSu2342">
+        <img src="https://github.com/AndresSu2342.png" width="100px;" alt="César Andrés Borray Suarez"/>
+        <br />
+        <sub><b>César Andrés Borray Suarez</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/JuanEstebanMedina">
+        <img src="https://github.com/JuanEstebanMedina.png" width="100px;" alt="Juan Esteban Medina Rivas"/>
+        <br />
+        <sub><b>Juan Esteban Medina Rivas</b></sub>
+      </a>
+    </td>
+  
+  </tr>
+  <tr>
+  <td align="center">
+      <a href="https://github.com/LauraRo166">
+        <img src="https://github.com/LauraRo166.png" width="100px;" alt="Laura Daniela Rodríguez Sánchez"/>
+        <br />
+        <sub><b>Laura Daniela Rodríguez Sánchez</b></sub>
+      </a>
+    </td>
+
+  <td align="center">
+      <a href="https://github.com/hakki17">
+        <img src="https://github.com/hakki17.png" width="100px;" alt="Maria Paula Sánchez Macías"/>
+        <br />
+        <sub><b>Maria Paula Sánchez Macías</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -44,7 +74,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 |:-:|-------|--------|
 | 0 | 📄 Original README | [View report](./weekly-reports/11/02/11-02-2026-READMEoriginal.md) |
 | 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11/02/11-02-2026-CodeSmells.md) |
-| 2 | 🧹 Clean Code & XP Practices | *Coming soon* |
+| 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22/02/22-02-2026-CleanCode.md) |
 | 3 | 🧪 Testing Debt | *Coming soon* |
 | 4 | 📊 Static Analysis | *Coming soon* |
 | 5 | 🚀 DevEx & SPACE | *Coming soon* |
@@ -70,9 +100,9 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ---
 
 #### 2. 🧹 Clean Code & XP Practices
-> Analysis of Clean Code and Extreme Programming (XP) practices applicable to the project. Identification of improvement opportunities in readability, naming conventions, structure, and code style.
+> Evaluation of all 8 Clean Code characteristics against the codebase, analysis of violated YAGNI/KISS/DRY/SOLID principles with real code examples, and recommendations of 8 XP practices to improve code quality.
 >
-> 📎 *Coming soon*
+> 📎 [22-02-2026-CleanCode.md](./weekly-reports/22-02-2026-CleanCode.md)
 
 ---
 
