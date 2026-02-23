@@ -30,19 +30,19 @@ We analyzed the project into three groups of modules, each of which was assigned
 
 ### 1.1 Clean Code Characteristics
 
-> ⏳ *Pending*
+> ⏳ _Pending_
 
 ---
 
 ### 1.2 Programming Principles Violations
 
-> ⏳ *Pending*
+> ⏳ _Pending_
 
 ---
 
 ### 1.3 XP Practices Recommendations
 
-> ⏳ *Pending*
+> ⏳ _Pending_
 
 ---
 
@@ -81,7 +81,7 @@ public class AddPatientController {
 
 The `add()` method simultaneously handles: reading 16 request parameters, constructing `Name` and `Address` objects, building a `Patient` entity, persisting it via DAO, and managing the response view. This is at least 4 distinct responsibilities in a single method.
 
-**Violation in `PatientPrescriptionDao.java`:**  
+**Violation in `PatientPrescriptionDao.java`:**
 This DAO manages both prescription counting AND patient name lookup. It also contains a hidden N+1 query inside `getPrescriptionList()`.
 
 **Recommendation:** Extract a dedicated `PatientService` that handles entity construction and orchestration. Split prescription-related logic into its own `PrescriptionDao` or service.
@@ -270,6 +270,7 @@ Three abstraction levels (data access, in-loop querying, string formatting) coll
 **Principle:** Code must have unit tests that are Fast, Independent, Repeatable, Self-Validating, and Timely.
 
 **Evidence:**
+
 - No test files exist in the project
 - `AddPatientController.add()` has 16 parameters — impossible to test without full request mocking
 - All DAOs inject `LoginDao` as a logging dependency, requiring Spring context setup to test anything
@@ -297,7 +298,7 @@ mv.addObject("prescriptionsCount", dao1.prescriptionPrintCount());  // for recep
 
 A method named `add()` is not expected to also query prescription counts. The comment `// for receptionist only` implies the caller context is a known workaround.
 
-**Violation — `SearchPatientDao.searchDoctorAssigned()`:**  
+**Violation — `SearchPatientDao.searchDoctorAssigned()`:**
 A class named `SearchPatientDao` should not contain a method that searches for doctors. This violates what the name implies.
 
 **Recommendation:** Move doctor-related queries out of `SearchPatientDao`. Document why `prescriptionsCount` is needed in the add flow, or pass it through a shared session attribute.
@@ -371,12 +372,12 @@ This also introduces a race condition: two concurrent requests could read the sa
 <details>
 <summary><strong>DRY — Don't Repeat Yourself ❌ VIOLATED</strong></summary>
 
-| Duplication | Locations |
-|---|---|
-| Full-name string concatenation | `PatientPrescriptionDao.getPrescriptionList()`, `PatientPrescriptionDao.getPatientName()`, `OpdDetailsDao.searchPatientName()` |
-| `searchDoctorAssigned()` HQL + loop | `SearchPatientDao`, `OpdDetailsDao` (identical implementation) |
-| Magic number `status=2` (printing) | `PatientPrescriptionDao`, `DeleteOpdDao` |
-| `LoginDao infoLog` injection boilerplate | Every DAO and Controller (8+ classes in this module) |
+| Duplication                              | Locations                                                                                                                      |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Full-name string concatenation           | `PatientPrescriptionDao.getPrescriptionList()`, `PatientPrescriptionDao.getPatientName()`, `OpdDetailsDao.searchPatientName()` |
+| `searchDoctorAssigned()` HQL + loop      | `SearchPatientDao`, `OpdDetailsDao` (identical implementation)                                                                 |
+| Magic number `status=2` (printing)       | `PatientPrescriptionDao`, `DeleteOpdDao`                                                                                       |
+| `LoginDao infoLog` injection boilerplate | Every DAO and Controller (8+ classes in this module)                                                                           |
 
 **Conclusion:** This module has the highest concentration of DRY violations in the project. The doctor name resolution logic alone is copied verbatim in two separate DAOs.
 
@@ -387,12 +388,12 @@ This also introduces a race condition: two concurrent requests could read the sa
 <details>
 <summary><strong>SOLID — S: Single Responsibility Principle ❌ VIOLATED</strong></summary>
 
-| Class | Responsibilities Found |
-|---|---|
-| `AddPatientController` | Request parsing, entity building, DAO orchestration, view resolution, prescription count retrieval |
-| `PatientPrescriptionDao` | Prescription listing, prescription counting, patient name lookup |
-| `SearchPatientDao` | Patient search by 4 criteria + doctor name resolution |
-| `DeleteOpdDao` | OPD deletion + prescription print state management + prescription-done confirmation |
+| Class                    | Responsibilities Found                                                                             |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| `AddPatientController`   | Request parsing, entity building, DAO orchestration, view resolution, prescription count retrieval |
+| `PatientPrescriptionDao` | Prescription listing, prescription counting, patient name lookup                                   |
+| `SearchPatientDao`       | Patient search by 4 criteria + doctor name resolution                                              |
+| `DeleteOpdDao`           | OPD deletion + prescription print state management + prescription-done confirmation                |
 
 </details>
 
@@ -445,16 +446,16 @@ No interface exists between any controller and its DAOs in this module. Unit tes
 
 **Specific actions for this module:**
 
-| # | Refactoring | Target | Risk |
-|---|---|---|---|
-| 1 | Introduce `PatientRegistrationDTO` to replace 16-parameter method | `AddPatientController.add()` | Low |
-| 2 | Replace `String[]` with `DoctorSummaryDTO` | `AddPatientDao.getDoctors()` | Low |
-| 3 | Extract `PersonNameUtils.fullName()` helper | `PatientPrescriptionDao`, `OpdDetailsDao` | Low |
-| 4 | Merge duplicate `searchDoctorAssigned()` into one shared DAO | `SearchPatientDao`, `OpdDetailsDao` | Medium |
-| 5 | Replace manual ID counter with `@GeneratedValue` | `AddPatientDao.add()` | Medium |
-| 6 | Replace N+1 in `getPrescriptionList()` with a JOIN query | `PatientPrescriptionDao` | Medium |
-| 7 | Introduce `OpdStatus` enum and replace all magic `status=0/1/2` | All OPD DAOs | Low |
-| 8 | Introduce `PatientService` to remove business logic from controller | `AddPatientController` | High |
+| #   | Refactoring                                                         | Target                                    | Risk   |
+| --- | ------------------------------------------------------------------- | ----------------------------------------- | ------ |
+| 1   | Introduce `PatientRegistrationDTO` to replace 16-parameter method   | `AddPatientController.add()`              | Low    |
+| 2   | Replace `String[]` with `DoctorSummaryDTO`                          | `AddPatientDao.getDoctors()`              | Low    |
+| 3   | Extract `PersonNameUtils.fullName()` helper                         | `PatientPrescriptionDao`, `OpdDetailsDao` | Low    |
+| 4   | Merge duplicate `searchDoctorAssigned()` into one shared DAO        | `SearchPatientDao`, `OpdDetailsDao`       | Medium |
+| 5   | Replace manual ID counter with `@GeneratedValue`                    | `AddPatientDao.add()`                     | Medium |
+| 6   | Replace N+1 in `getPrescriptionList()` with a JOIN query            | `PatientPrescriptionDao`                  | Medium |
+| 7   | Introduce `OpdStatus` enum and replace all magic `status=0/1/2`     | All OPD DAOs                              | Low    |
+| 8   | Introduce `PatientService` to remove business logic from controller | `AddPatientController`                    | High   |
 
 </details>
 
@@ -477,6 +478,7 @@ No interface exists between any controller and its DAOs in this module. Unit tes
 <summary><strong>3. Simple Design 🟡 Medium Priority</strong></summary>
 
 Applying to this module specifically:
+
 - Replace the 16-parameter `add()` method with form binding (`@ModelAttribute`)
 - Replace count-via-loop with `COUNT(*)` SQL aggregate
 - Remove commented-out code and restore proper exception handling in `AddPatientController.add()`
@@ -489,6 +491,7 @@ Applying to this module specifically:
 <summary><strong>4. Coding Standard 🟡 Medium Priority</strong></summary>
 
 **Issues specific to this module:**
+
 - DAO fields named `dao`, `dao1` provide no semantic information — should be `addPatientDao`, `prescriptionDao`
 - Unused import `org.springframework.stereotype.Controller` in `PatientPrescriptionDao.java`
 - `int i = 0, j = 0;` should be declared at the point of first use; `j` should be removed entirely
@@ -505,24 +508,440 @@ Applying to this module specifically:
 
 ### 3.1 Clean Code Characteristics
 
-> ⏳ *Pending*
+> ---
+
+#### ✅ Good Practices — Entities
+
+<details open>
+<summary><strong>Naming Conventions</strong></summary>
+
+We found that class names are clear and correct, following the proper PascalCase format for the project context, with the exception of \_OpdRecord.java. Not only class names but each class has attributes that are correctly named using camelCase. Additionally, function names are totally understandable.
+
+**Exception:** `_OpdRecord.java` violates the convention by starting with underscore.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Format and Structure</strong></summary>
+
+Although it's a small detail, all classes use the same indentation and follow an order at the level of class annotations, attributes, constructors, getters and setters, among others.
+
+All entities maintain:
+
+- Consistent indentation (4 spaces)
+- Logical order: annotations → attributes → constructors → getters/setters → toString()
+- Uniform vertical spacing between methods
+
+</details>
+
+---
+
+<details>
+<summary><strong>Small and Simple Methods</strong></summary>
+
+In general we observed that the entity methods are all composed only of getters and setters. Therefore they comply with concise and quite simple methods. This also includes constructors.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Correct Use of Value Objects</strong></summary>
+
+`Name` and `Address` as `@Embeddable` avoid duplication and maintain cohesion.
+
+</details>
+
+---
+
+#### ✅ Good Practices — Doctor Module
+
+<details open>
+<summary><strong>Naming Conventions at Method Level</strong></summary>
+
+Method names are descriptive and correctly follow camelCase: `showHistoryList()`, `dopdQueue()`, `addPatientCase()`, `searchDoctorAssigned()`. These names clearly communicate their purpose without needing additional documentation.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Separation of Responsibilities Between Layers</strong></summary>
+
+There is a clear division between controllers and DAOs. Controllers handle HTTP and views, while DAOs take care of database operations. This separation facilitates maintenance and independent testing of each layer.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Use of Spring Annotations</strong></summary>
+
+All classes correctly use `@Controller`, `@Component`, `@Autowired`, `@Transactional`, and `@RequestMapping`. Transactions are well delimited in data access methods.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Dependency Injection</strong></summary>
+
+Field injection is consistently used with `@Autowired`, avoiding direct coupling between classes and facilitating testing with mocks.
+
+</details>
+
+---
+
+#### ❌ Bad Practices — Entities
+
+<details open>
+<summary><strong>01. Absence of Validations (Bean Validation)</strong></summary>
+
+Entities allow saving invalid data without any restrictions. Patient and Employee accept malformed emails, negative phone numbers or with incorrect format, and identity documents without any validation. OpdDetails allows negative medical fees. This lack of validation compromises the integrity of all system data.
+
+**Examples:**
+
+```java
+// Patient.java (line 32)
+private String emailID;  // We found it doesn't validate that the email has an "@" or restrict that there aren't "@%@" but perfectly there can be several errors because of this
+
+// Employee.java (line 40)
+private long mobileNo;   // Accepts negative numbers
+
+// OpdDetails.java (line 16)
+int fees;                // This also doesn't validate that negative numbers aren't accepted
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>02. Duplicated Code (DRY)</strong></summary>
+
+Patient.java and Employee.java repeat exactly the same attributes: emailID, mobileNo, adharNo, country, state, city and address. This duplication makes any change require modifying both classes, increasing the risk of inconsistencies.
+
+**Duplicated attributes in both classes:**
+
+```java
+private String emailID;
+private long mobileNo;
+private long adharNo;
+private String country;
+private String state;
+private String city;
+private Address address;
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>03. Obvious or Contradictory Comments</strong></summary>
+
+Comments don't add value. \_OpdRecord explains in a comment with spelling errors why it's not an entity, when the class name should make it clear. Multiple attributes have comment "//optional" but the code doesn't reflect they are optional.
+
+**Examples:**
+
+```java
+// _OpdRecord.java (line 3)
+//Not annotated using @Entity bcoz we dont want to store its data in database
+
+// Patient.java
+private String specialization;  //optional
+// Without @Nullable, the comment contradicts the implementation
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>04. Single Responsibility (SRP) Poorly Implemented</strong></summary>
+
+We found that in Opd.java mixes two responsibilities, the first is being a persistence entity and the second is defining system state constants. And another we observed is that in Login.java, the class combines authentication data with being a primary key. IdGenerate confuses its purpose between database entity and in-memory counter.
+
+</details>
+
+---
+
+#### ❌ Bad Practices — Doctor Module
+
+<details open>
+<summary><strong>01. Inconsistent Class Names</strong></summary>
+
+We found two classes that don't follow Java parameters for being a class, since they start with lowercase: patientObservePrescribeController and patientObservePrescribeDao. This breaks code consistency. They should be PatientObservePrescribeController and PatientObservePrescribeDao.
+
+</details>
+
+---
+
+<details>
+<summary><strong>02. Methods Too Long with Many Responsibilities</strong></summary>
+
+PatientHistoryController.showHistoryList() has 31 lines and we found five different responsibilities: logging, session retrieval, database query, result validation, and view construction. The method PatientDopdDetailsController.view() also mixes around six responsibilities: logging, patient search, doctor search, validation, session management, and response construction.
+
+**Example of method with multiple responsibilities:**
+
+```java
+// PatientHistoryController.java (lines 29-59)
+public ModelAndView showHistoryList(HttpServletRequest request) {
+    // Responsibility 1: Logging
+    infoLog.logActivities("in PatientHistoryController-showHistoryList:");
+
+    // Responsibility 2: Get session
+    HttpSession session= request.getSession();
+    String pid=(String) session.getAttribute("currentPatientId");
+
+    // Responsibility 3: Query database
+    List historyList=dao.showHistoryList(pid);
+
+    // Responsibility 4: Validate result
+    if(! historyList.equals(null))
+
+    // Responsibility 5: Build view
+    ModelAndView mv= new ModelAndView();
+    mv.addObject("historyList",historyList);
+    // ...
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>03. Excess of Parameters in Methods</strong></summary>
+
+The method addPatientCase() in patientObservePrescribeController receives 9 parameters: symptoms, diagnosis, medicinesDose, dos, donts, investigations, followupDate, fees, request. This makes the method difficult to invoke, maintain and test. We consider it should receive a DTO object that encapsulates all this data.
+
+**Here's the example:**
+
+```java
+// patientObservePrescribeController.java (line 45)
+public ModelAndView addPatientCase(
+    @RequestParam("symptoms")String symptoms,
+    @RequestParam("diagnosis")String diagnosis,
+    @RequestParam("medicinesDose")String medicinesDose,
+    @RequestParam("dos")String dos,
+    @RequestParam("donts")String donts,
+    @RequestParam("investigations")String investigations,
+    @RequestParam("followupDate")String followupDate,
+    @RequestParam("fees")int fees,
+    HttpServletRequest request)
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>04. Incorrect Error Handling</strong></summary>
+
+Validations with `.equals(null)` are used which always return false because null is not an object. In PatientHistoryController line 41 and DopdDetailsController line 40 it validates `if(! historyList.equals(null))` when it should be `if(historyList != null)`. Additionally, generic exceptions are caught with `catch(Exception e)` without discriminating between different error types, which hides real problems.
+
+**Examples of incorrect validation:**
+
+```java
+// PatientHistoryController.java (line 41)
+if(! historyList.equals(null))  // Always false, null has no equals method
+
+// DopdDetailsController.java (line 40)
+if(! patients.equals(null))  // The same error
+
+// Should be:
+if(historyList != null && !historyList.isEmpty())
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>05. Return Null Instead of Optional or Exceptions</strong></summary>
+
+All DAOs return null when an error occurs: PatientHistoryDao lines 66 and 87, DopdDetailsDao line 53, patientObservePrescribeDao line 58. This forces controllers to constantly validate null and can cause cascading NullPointerException if any validation is forgotten.
+
+**Pattern repeated in all DAOs:**
+
+```java
+// PatientHistoryDao.java (lines 63-67)
+catch(Exception e) {
+    infoLog.logActivities("in PatientHistoryDao-showHistoryList: "+e);
+    return null;  // Hides the error
+}
+
+// DopdDetailsDao.java (lines 50-54)
+catch(Exception e) {
+    infoLog.logActivities("in DopdDetailsDao-dopdQueue: "+e);
+    return null;  // Same pattern
+}
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>06. Variables with Cryptic Names</strong></summary>
+
+DAOs use non-descriptive variable names: `q1`, `q2` for queries, `l1` for lists, `temp` for temporary arrays, `p1` for patients. These names could be quite confusing and don't communicate their purpose, thus demonstrating they are not clear at all.
+
+**Examples:**
+
+```java
+// PatientHistoryDao.java (lines 41, 47, 52)
+Query q1= session.createQuery("...");  // ❌ Query of what?
+List l1=(List) q1.list();   // ❌ List of what?
+String[] temp= new String[3];          // ❌ Temporary for what?
+```
+
+</details>
+
+---
+
+<details>
+<summary><strong>07. Duplicated Code Between Controllers</strong></summary>
+
+The view() methods in PatientDopdDetailsController (lines 27-60 and 63-96) are almost completely duplicated. Both search patient, search assigned doctor, validate, save to session and build the same view. The only difference is how they obtain the pid: one by POST parameter and another from session.
+
+**Duplication of 40+ lines:**
+
+```java
+// Method 1 (lines 27-60): receives pid by parameter
+Patient p1=dao.searchId(pid);
+String doctorAssigned=dao.searchDoctorAssigned(p1.getDoctorId());
+if(!(p1.getPid().equals(null)) && !(doctorAssigned.equals(null))) {
+    session.setAttribute("currentPatientId", p1.getPid());
+    // ... view construction
+}
+
+// Method 2 (lines 63-96): gets pid from session
+String pid=(String)session.getAttribute("currentPatientId");
+Patient p1=dao.searchId(pid);
+String doctorAssigned=dao.searchDoctorAssigned(p1.getDoctorId());
+if(!(p1.getPid().equals(null)) && !(doctorAssigned.equals(null))) {
+    // ... SAME view construction
+}
+```
+
+</details>
 
 ---
 
 ### 3.2 Programming Principles Violations
 
-> ⏳ *Pending*
+---
+
+#### Entities
+
+<details open>
+<summary><strong>Single Responsibility Principle (SRP)</strong></summary>
+
+Entities are assuming multiple responsibilities at the same time. Opd.java is both the persistence entity and the one that groups business constants. Login.java mixes authentication with system identity. IdGenerate confuses configuration with persistence. Each class should have a single reason to change.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Open/Closed Principle (OCP)</strong></summary>
+
+The states of Opd are hardcoded as numeric constants, and this would be an impediment to add new states to the existing ones, since it would be necessary to modify the code. An enum OpdStatus would have made extension possible without modifying the code.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Don't Repeat Yourself (DRY)</strong></summary>
+
+Patient and Employee duplicate 7 identical attributes. Changing the person structure would require modifying both classes. A Person base class would have avoided this duplication.
+
+</details>
+
+---
+
+#### Doctor Module
+
+<details open>
+<summary><strong>Single Responsibility Principle (SRP)</strong></summary>
+
+Controllers assume too many responsibilities simultaneously. PatientHistoryController.showHistoryList() handles logging, HTTP sessions, database queries, result validation, and view construction. PatientDopdDetailsController.view() additionally manages multiple searches and data transformations. Each method should delegate these responsibilities to specialized services.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Don't Repeat Yourself (DRY)</strong></summary>
+
+PatientDopdDetailsController has two almost identical methods (view and viewData) that duplicate 40+ lines of code. DAOs duplicate the error handling pattern with return null in each method. Magic numbers 0 and 1 for statuses repeat in multiple files without using the constants defined in Opd.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Open/Closed Principle (OCP)</strong></summary>
+
+Methods are coupled to concrete implementations. Changing the logging mechanism, session source, or response format requires modifying each controller. No abstraction exists to extend functionality without modifying existing code.
+
+</details>
+
+---
+
+<details>
+<summary><strong>KISS (Keep It Simple, Stupid)</strong></summary>
+
+The validation `if(! patients.equals(null))` complicates unnecessarily something simple. The method with 9 parameters could be simplified with a DTO. Nested validations and generic exception handling add complexity without benefit.
+
+</details>
 
 ---
 
 ### 3.3 XP Practices Recommendations
 
-> ⏳ *Pending*
+---
+
+#### Entities
+
+<details open>
+<summary><strong>XP Practices for Entities</strong></summary>
+
+| PRÁCTICA XP                       | BENEFICIO EN ENTIDADES                                                                  |
+| --------------------------------- | --------------------------------------------------------------------------------------- |
+| **Test-Driven Development (TDD)** | Validaciones garantizadas<br>Constraints verificados<br>Relaciones JPA probadas         |
+| **Simple Design**                 | Eliminar IdGenerate<br>Usar secuencias BD estándar<br>\_OpdRecord → OpdRecordDTO        |
+| **Refactoring Continuo**          | Extract Superclass (Person)<br>Replace Type Code with Enum<br>Introduce Bean Validation |
+| **Collective Code Ownership**     | Convenciones documentadas<br>equals()/hashCode() estándar<br>Validaciones consistentes  |
+
+</details>
 
 ---
 
-*[⬆ Back to top](#-clean-code--xp-practices)*
+#### Doctor Module
+
+<details open>
+<summary><strong>XP Practices for Doctor Module</strong></summary>
+
+| PRÁCTICA XP                       | BENEFICIO EN MÓDULO DOCTORES                                                                                   |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Test-Driven Development (TDD)** | Tests unitarios para lógica de negocio<br>Tests de integración para DAOs<br>Mocks para controllers             |
+| **Simple Design**                 | Eliminar logging manual invasivo<br>Usar Optional en lugar de null<br>Reemplazar magic numbers con constantes  |
+| **Refactoring Continuo**          | Extract Method para métodos largos<br>Extract Service Layer<br>Replace Parameter Object para 9 parámetros      |
+| **Collective Code Ownership**     | Convenciones de naming documentadas<br>Manejo de errores estandarizado<br>Logging con AOP en lugar de manual   |
+| **Continuous Integration**        | Análisis estático de código (SonarQube)<br>Cobertura de tests mínima<br>Validación de convenciones en pipeline |
+
+</details>
 
 ---
 
-*CSDT_M — Software Quality and Technical Debt | February 2026*
+_[⬆ Back to top](#-clean-code--xp-practices)_
+
+---
+
+_CSDT_M — Software Quality and Technical Debt | February 2026_
