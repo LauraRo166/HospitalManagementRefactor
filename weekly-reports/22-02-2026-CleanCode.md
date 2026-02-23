@@ -1394,12 +1394,12 @@ The validation `if(! patients.equals(null))` complicates unnecessarily something
 <details open>
 <summary><strong>XP Practices for Entities</strong></summary>
 
-| PRÁCTICA XP                       | BENEFICIO EN ENTIDADES                                                                  |
+| XP PRACTICE                       | BENEFIT IN ENTITIES                                                                     |
 | --------------------------------- | --------------------------------------------------------------------------------------- |
-| **Test-Driven Development (TDD)** | Validaciones garantizadas<br>Constraints verificados<br>Relaciones JPA probadas         |
-| **Simple Design**                 | Eliminar IdGenerate<br>Usar secuencias BD estándar<br>\_OpdRecord → OpdRecordDTO        |
-| **Refactoring Continuo**          | Extract Superclass (Person)<br>Replace Type Code with Enum<br>Introduce Bean Validation |
-| **Collective Code Ownership**     | Convenciones documentadas<br>equals()/hashCode() estándar<br>Validaciones consistentes  |
+| **Test-Driven Development (TDD)** | Guaranteed validations<br>Verified constraints<br>Tested JPA relationships              |
+| **Simple Design**                 | Eliminate IdGenerate<br>Use standard DB sequences<br>\_OpdRecord → OpdRecordDTO         |
+| **Continuous Refactoring**        | Extract Superclass (Person)<br>Replace Type Code with Enum<br>Introduce Bean Validation |
+| **Collective Code Ownership**     | Documented conventions<br>Standard equals()/hashCode()<br>Consistent validations        |
 
 </details>
 
@@ -1410,13 +1410,13 @@ The validation `if(! patients.equals(null))` complicates unnecessarily something
 <details open>
 <summary><strong>XP Practices for Doctor Module</strong></summary>
 
-| PRÁCTICA XP                       | BENEFICIO EN MÓDULO DOCTORES                                                                                   |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| **Test-Driven Development (TDD)** | Tests unitarios para lógica de negocio<br>Tests de integración para DAOs<br>Mocks para controllers             |
-| **Simple Design**                 | Eliminar logging manual invasivo<br>Usar Optional en lugar de null<br>Reemplazar magic numbers con constantes  |
-| **Refactoring Continuo**          | Extract Method para métodos largos<br>Extract Service Layer<br>Replace Parameter Object para 9 parámetros      |
-| **Collective Code Ownership**     | Convenciones de naming documentadas<br>Manejo de errores estandarizado<br>Logging con AOP en lugar de manual   |
-| **Continuous Integration**        | Análisis estático de código (SonarQube)<br>Cobertura de tests mínima<br>Validación de convenciones en pipeline |
+| XP PRACTICE                       | BENEFIT IN DOCTOR MODULE                                                                                  |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **Test-Driven Development (TDD)** | Unit tests for business logic<br>Integration tests for DAOs<br>Mocks for controllers                      |
+| **Simple Design**                 | Eliminate invasive manual logging<br>Use Optional instead of null<br>Replace magic numbers with constants |
+| **Continuous Refactoring**        | Extract Method for long methods<br>Extract Service Layer<br>Replace Parameter Object for 9 parameters     |
+| **Collective Code Ownership**     | Documented naming conventions<br>Standardized error handling<br>Logging with AOP instead of manual        |
+| **Continuous Integration**        | Static code analysis (SonarQube)<br>Minimum test coverage<br>Convention validation in pipeline            |
 
 </details>
 
