@@ -1,341 +1,148 @@
-<a id="top"></a>
+# 🏥 Hospital Management System
+## Technical Debt Analysis & Improvement
+
+> Fork of [HospitalManagement](https://github.com/rid17pawar/HospitalManagement) by rid17pawar, focused on the progressive analysis, identification, and improvement of technical debt within the system.
+>
+> **Course:** CSDT_M — Software Quality and Technical Debt
+
+---
+
+## 📌 Project Description
+
+A web-based system designed to replace traditional paper-based hospital workflows with a secure and efficient digital platform. Built with **Spring MVC** and **Hibernate** as the main frameworks, using **MySQL** as the database.
+
+### Main features of the original system
+
+- Patient and staff management
+- Automatic PDF prescription generation
+- OPD (Outpatient Department) queue management
+- Role-based modules: Doctor, Receptionist, and Administrator
+- Password encryption with BCrypt
+
+---
+
+## 🎯 Fork Objective
+
+This fork has an academic purpose: **iterative analysis and improvement of the technical debt** present in the original project. Over 8 weeks, the team will identify code smells, propose and apply refactorings, implement tests, analyze static metrics, and improve the architecture and development process, documenting each advancement weekly.
+
+---
+
+## 👥 Team Members
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/AndresSu2342">
+        <img src="https://github.com/AndresSu2342.png" width="100px;" alt="César Andrés Borray Suarez"/>
+        <br />
+        <sub><b>César Andrés Borray Suarez</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/JuanEstebanMedina">
+        <img src="https://github.com/JuanEstebanMedina.png" width="100px;" alt="Juan Esteban Medina Rivas"/>
+        <br />
+        <sub><b>Juan Esteban Medina Rivas</b></sub>
+      </a>
+    </td>
+  
+  </tr>
+  <tr>
+  <td align="center">
+      <a href="https://github.com/LauraRo166">
+        <img src="https://github.com/LauraRo166.png" width="100px;" alt="Laura Daniela Rodríguez Sánchez"/>
+        <br />
+        <sub><b>Laura Daniela Rodríguez Sánchez</b></sub>
+      </a>
+    </td>
 
-<h1 align="center">🏥 Hospital Management System - Technical Debt Analysis</h1>
+  <td align="center">
+      <a href="https://github.com/hakki17">
+        <img src="https://github.com/hakki17.png" width="100px;" alt="Maria Paula Sánchez Macías"/>
+        <br />
+        <sub><b>Maria Paula Sánchez Macías</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-Technical documentation focused on analyzing, identifying, and improving technical debt within the Hospital Management System.
-</p>
+---
 
-<hr>
+## 📚 Weekly Reports Index
 
-<h2>📋 Table of Contents</h2>
+| # | Topic | Report |
+|:-:|-------|--------|
+| 0 | 📄 Original README | [View report](./weekly-reports/11/02/11-02-2026-READMEoriginal.md) |
+| 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11/02/11-02-2026-CodeSmells.md) |
+| 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
+| 3 | 🧪 Testing Debt | *Coming soon* |
+| 4 | 📊 Static Analysis | *Coming soon* |
+| 5 | 🚀 DevEx & SPACE | *Coming soon* |
+| 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
+| 7 | 🏛️ Technical Debt in Architecture | *Coming soon* |
 
-<ul>
-  <li><a href="#project-description">📌 Project Description</a></li>
-  <li><a href="#technical-debt">🔍 Technical Debt Analysis</a></li>
-  <li><a href="#code-smells">🚨 Code Smells Identified</a></li>
-  <li><a href="#refactoring">🔧 Refactoring Techniques</a></li>
-  <li><a href="#implementation">✅ Implementation Plan</a></li>
-  <li><a href="#git-workflow">📊 Git Workflow</a></li>
-  <li><a href="#configuration">🛠 Project Configuration</a></li>
-  <li><a href="#technologies">💻 Technologies</a></li>
-  <li><a href="#contributing">📝 Contributing</a></li>
-</ul>
+---
 
-<hr>
+### Index Detail
 
-<h2 id="project-description">📌 Project Description</h2>
+#### 0. 📄 Original README
+> The original README from the forked project, preserved as a reference for the system's initial documentation.
+>
+> 📎 [11-02-2026-READMEoriginal.md](./weekly-reports/11-02-2026-READMEoriginal.md)
 
-<p>
-A web-based system designed to replace traditional paper-based hospital workflows with a secure and efficient digital platform.
-</p>
+---
 
-<h3>Main Features</h3>
+#### 1. 🚨 Code Smells & Refactoring Proposals
+> Identification of the main code smells present in the system's source code (Tight Coupling, God Class, Poor Exception Handling, Magic Numbers, among others) and concrete refactoring proposals for each one.
+>
+> 📎 [13-02-2026-CodeSmells.md](./weekly-reports/13-02-2026-CodeSmells.md)
 
-<ul>
-<li>Patient and staff management</li>
-<li>Automatic PDF prescription generation</li>
-<li>OPD queue management</li>
-<li>Role-based modules for doctors, receptionists, and administrators</li>
-</ul>
+---
 
-<h3>📄 Original Documentation</h3>
+#### 2. 🧹 Clean Code & XP Practices
+> Evaluation of all 8 Clean Code characteristics against the codebase, analysis of violated YAGNI/KISS/DRY/SOLID principles with real code examples, and recommendations of 8 XP practices to improve code quality.
+>
+> 📎 [22-02-2026-CleanCode.md](./weekly-reports/22-02-2026-CleanCode.md)
 
-<ul>
-<li><a href="https://drive.google.com/file/d/1L6zUvNPXV4mYNnl2zLYyxvyz2RwoUt1G/view?usp=sharing">PPT Presentation</a></li>
-<li><a href="https://drive.google.com/file/d/11DQDP_ZN2h7Cq3hiIRw3pCzPhR_VCL8p/view?usp=sharing">Project SRS</a></li>
-<li><a href="https://drive.google.com/file/d/128Qn3pqBFj84w6OXBSwuWXYpag_Wn0dT/view?usp=sharing">Project Report</a></li>
-<li><a href="https://youtu.be/SwE4mxQxhEI">Demo Video</a></li>
-</ul>
+---
 
-<p align="right"><a href="#top">⬆ Back to top</a></p>
+#### 3. 🧪 Testing Debt
+> Evaluation of testing debt: absence of unit and integration tests, code coverage, testing strategy proposals, and first implementations.
+>
+> 📎 *Coming soon*
 
-<hr>
+---
 
-<h2 id="technical-debt">🔍 Technical Debt Analysis</h2>
+#### 4. 📊 Static Analysis
+> Static code analysis using tools such as SonarQube, Checkstyle, or SpotBugs. Report on quality metrics, cyclomatic complexity, and rule violations.
+>
+> 📎 *Coming soon*
 
-<details>
-<summary><strong>Analysis Methodology</strong></summary>
+---
 
-<br>
+#### 5. 🚀 DevEx & SPACE
+> Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
+>
+> 📎 *Coming soon*
 
-<ul>
-<li>Manual source code review</li>
-<li>Anti-pattern detection</li>
-<li>Architecture evaluation</li>
-<li>SOLID principles validation</li>
-<li>Spring MVC & Hibernate best practices</li>
-</ul>
+---
 
-<p><strong>TODO:</strong> Analyze the codebase and document technical debt issues.</p>
+#### 6. ⚙️ Technical Debt in Processes
+> Identification of technical debt in development processes: lack of CI/CD, absence of formal code reviews, dependency management, process documentation, etc.
+>
+> 📎 *Coming soon*
 
-</details>
+---
 
-<p align="right"><a href="#top">⬆ Back to top</a></p>
+#### 7. 🏛️ Technical Debt in Architecture
+> Structural analysis of the system's architecture: layer violations, absence of architectural patterns, circular dependencies, inter-module coupling, and improvement proposals.
+>
+> 📎 *Coming soon*
 
-<hr>
+---
 
-<h2 id="code-smells">🚨 Code Smells Identified</h2>
+*[⬆ Back to top](#-hospital-management-system)*
 
-<details open>
-<summary><strong>Example: Tight Coupling</strong></summary>
+---
 
-<br>
-
-<p><strong>Description:</strong> Controllers are tightly coupled with concrete service and DAO implementations.</p>
-
-<p><strong>Location:</strong> <code>DoctorController.java</code></p>
-
-<pre>
-public class DoctorController {
-    private DoctorServiceImpl doctorService;
-    private PatientDAOImpl patientDAO;
-}
-</pre>
-
-<p><strong>Impact:</strong></p>
-
-<ul>
-<li>Harder unit testing</li>
-<li>Low flexibility</li>
-<li>Violates Dependency Inversion Principle</li>
-</ul>
-
-<p><strong>Recommendation:</strong> Use interfaces with dependency injection.</p>
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>Common Code Smells To Evaluate</strong></summary>
-
-<ul>
-<li>God Classes</li>
-<li>Long Methods</li>
-<li>Code Duplication</li>
-<li>Poor Exception Handling</li>
-<li>Hardcoded Values</li>
-<li>N+1 Queries</li>
-<li>Missing DTOs</li>
-<li>Lack of Logging</li>
-<li>Missing Unit Tests</li>
-</ul>
-
-</details>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<hr>
-
-<h2 id="refactoring">🔧 Refactoring Techniques Proposed</h2>
-
-<details open>
-<summary><strong>Extract Method Refactoring</strong></summary>
-
-<br>
-
-<p><strong>Purpose:</strong> Break long methods into smaller cohesive methods.</p>
-
-<p><strong>Benefits:</strong></p>
-
-<ul>
-<li>Improved readability</li>
-<li>Better testability</li>
-<li>Higher maintainability</li>
-<li>Increased reuse</li>
-</ul>
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>Other Planned Refactoring Techniques</strong></summary>
-
-<ul>
-<li>Extract Class</li>
-<li>Introduce Parameter Object</li>
-<li>Replace Conditional with Polymorphism</li>
-<li>Repository Pattern</li>
-<li>DTO Pattern</li>
-<li>Dependency Injection</li>
-<li>Global Exception Handling</li>
-<li>Bean Validation</li>
-<li>Query Optimization</li>
-</ul>
-
-</details>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<hr>
-
-<h2 id="implementation">✅ Implementation Plan</h2>
-
-<h3>Phase 1 – Low Risk</h3>
-
-<ul>
-<li>Logging integration</li>
-<li>Constants classes</li>
-<li>Bean validation</li>
-<li>Code documentation</li>
-</ul>
-
-<h3>Phase 2 – Service Refactoring</h3>
-
-<ul>
-<li>Extract long methods</li>
-<li>DTO implementation</li>
-<li>Mapper creation</li>
-</ul>
-
-<h3>Phase 3 – Architecture Improvements</h3>
-
-<ul>
-<li>Repository pattern</li>
-<li>Global exception handlers</li>
-<li>Hibernate optimization</li>
-</ul>
-
-<h3>Phase 4 – Testing & Security</h3>
-
-<ul>
-<li>Unit tests</li>
-<li>Integration tests</li>
-<li>Security review</li>
-<li>External configuration</li>
-</ul>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<hr>
-
-<h2 id="git-workflow">📊 Git Workflow</h2>
-
-<pre>
-git checkout main
-git pull
-git checkout -b feature/technical-debt-fixes
-git add .
-git commit -m "refactor: improve service separation"
-git push origin feature/technical-debt-fixes
-</pre>
-
-<h3>Commit Convention</h3>
-
-<ul>
-<li>feat – New feature</li>
-<li>fix – Bug fix</li>
-<li>refactor – Code improvement</li>
-<li>docs – Documentation</li>
-<li>test – Testing</li>
-<li>perf – Performance improvement</li>
-</ul>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<hr>
-
-<h2 id="configuration">🛠 Project Configuration</h2>
-
-<details>
-<summary><strong>Prerequisites</strong></summary>
-
-<ul>
-<li>JDK 8+</li>
-<li>Apache Tomcat</li>
-<li>MySQL</li>
-<li>Maven</li>
-<li>Eclipse IDE</li>
-</ul>
-
-</details>
-
-<details>
-<summary><strong>Run Steps</strong></summary>
-
-<pre>
-git clone &lt;repository-url&gt;
-cd HospitalManagement
-</pre>
-
-<p>Import Maven project → Configure database → Run on Tomcat</p>
-
-</details>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<hr>
-
-<h2 id="technologies">💻 Technologies Used</h2>
-
-<h3>Frontend</h3>
-<ul>
-<li>HTML5</li>
-<li>CSS3</li>
-<li>Bootstrap</li>
-<li>JavaScript</li>
-<li>jQuery</li>
-</ul>
-
-<h3>Backend</h3>
-<ul>
-<li>Java</li>
-<li>Spring MVC</li>
-<li>Hibernate</li>
-<li>Spring Security</li>
-<li>BCrypt</li>
-</ul>
-
-<h3>Database</h3>
-<ul>
-<li>MySQL</li>
-</ul>
-
-<h3>Tools</h3>
-<ul>
-<li>Maven</li>
-<li>Git</li>
-<li>Postman</li>
-</ul>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<h2 id="contributing">📝 Contributing</h2>
-
-<ol>
-<li>Fork the repository</li>
-<li>Create feature branch</li>
-<li>Commit changes</li>
-<li>Push branch</li>
-<li>Create Pull Request</li>
-</ol>
-
-<h3>Code Guidelines</h3>
-
-<ul>
-<li>Follow Java naming conventions</li>
-<li>Document public methods</li>
-<li>Write tests</li>
-<li>Single Responsibility Principle</li>
-<li>Dependency Injection</li>
-</ul>
-
-<p align="right"><a href="#top">⬆ Back to top</a></p>
-
-<h2 align="center">🤝 Team & Contact</h2>
-
-<p align="center">
-Create a GitHub issue for suggestions or questions.
-</p>
-
-<hr>
-
-<p align="center">
-<strong>Made with ❤️ to improve hospital management</strong>
-</p>
-
-<p align="center">
-<em>Technical Debt Documentation – February 2026</em>
-</p>
+**CSDT_M — Software Quality and Technical Debt | 2026**
