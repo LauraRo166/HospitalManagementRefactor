@@ -72,10 +72,10 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 | # | Topic | Report |
 |:-:|-------|--------|
-| 0 | 📄 Original README | [View report](./weekly-reports/11/02/11-02-2026-READMEoriginal.md) |
-| 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11/02/11-02-2026-CodeSmells.md) |
+| 0 | 📄 Original README | [View report](./weekly-reports/11-02-2026-READMEoriginal.md) |
+| 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/13-02-2026-CodeSmells.md) |
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
-| 3 | 🧪 Testing Debt | *Coming soon* |
+| 3 | 🧪 Testing Debt | [View report](./weekly-reports/28-02-2026-TestingDebt.md) |
 | 4 | 📊 Static Analysis | *Coming soon* |
 | 5 | 🚀 DevEx & SPACE | *Coming soon* |
 | 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
@@ -107,9 +107,16 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ---
 
 #### 3. 🧪 Testing Debt
-> Evaluation of testing debt: absence of unit and integration tests, code coverage, testing strategy proposals, and first implementations.
+> Comprehensive analysis of testing debt in the HMS project, identifying 5 critical testing debt practices:
+> - Absence of automated test suite (0% coverage)
+> - Tight coupling between controllers and DAO layer (unit testing impossible)
+> - Generic exception handling masking error scenarios
+> - Long parameter lists preventing effective testing
+> - Lack of input validation causing security risks
 >
-> 📎 *Coming soon*
+> Includes detailed code examples, impact analysis, and implementation roadmap for unit testing.
+>
+> 📎 [28-02-2026-TestingDebt.md](./weekly-reports/28-02-2026-TestingDebt.md)
 
 ---
 
