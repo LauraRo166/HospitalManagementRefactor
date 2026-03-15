@@ -45,7 +45,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
         <sub><b>Juan Esteban Medina Rivas</b></sub>
       </a>
     </td>
-  
+
   </tr>
   <tr>
   <td align="center">
@@ -72,8 +72,8 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 | # | Topic | Report |
 |:-:|-------|--------|
-| 0 | 📄 Original README | [View report](./weekly-reports/11/02/11-02-2026-READMEoriginal.md) |
-| 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11/02/11-02-2026-CodeSmells.md) |
+| 0 | 📄 Original README | [View report](./weekly-reports/11-02-2026-READMEoriginal.md) |
+| 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11-02-2026-CodeSmells.md) |
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
 | 3 | 🧪 Testing Debt | *Coming soon* |
 | 4 | 📊 Static Analysis | *Coming soon* |
