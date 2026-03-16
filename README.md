@@ -122,7 +122,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 > Static code analysis using tools such as SonarQube, Checkstyle, or SpotBugs. Report on quality metrics, cyclomatic complexity, and rule violations.
 >
-> 📎 _Coming soon_
+> 📎 [15-03-2026-staticAnalysis.md](./weekly-reports/15-03-2026-StaticAnalysis.md)
 
 ---
 
