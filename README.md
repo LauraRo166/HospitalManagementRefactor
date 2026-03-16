@@ -1,163 +1,157 @@
-# 📊 CSDT — Primera Entrega 2024
+# 🏥 Hospital Management System
 
-## Modelos de Calidad: Análisis con SonarCloud
+## Technical Debt Analysis & Improvement
 
-> **Proyecto:** HospitalManagementRefactor
-> **Organización:** Escuela Colombiana de Ingeniería CSDT
-> **Fecha de análisis:** 15 de marzo de 2026
-> **Rama analizada:** `master`
-> **Líneas de código:** ~7.5k (JSP, Java)
-
----
-
-## 🧰 Herramienta Utilizada: SonarCloud
-
-### ¿Qué es SonarCloud?
-
-[SonarCloud](https://sonarcloud.io) es la versión **100% online** de SonarQube. Realiza análisis estático de código directamente desde repositorios de GitHub sin la necesidad de instalar ningún servidor local.
-
-### ¿Por qué elegimos SonarCloud?
-
-| Criterio                 | Detalle                                                   |
-| ------------------------ | --------------------------------------------------------- |
-| 🌐 **Online**            | No requiere instalación, se conecta directamente a GitHub |
-| 🆓 **Gratuito**          | Para proyectos públicos como el nuestro                   |
-| ☕ **Soporte Java**      | Análisis profundo de Java, Spring MVC, JSP y Maven        |
-| 📊 **Dashboard visual**  | Métricas claras exportables para documentación            |
-| 🔁 **CI/CD integrado**   | Se ejecuta automáticamente en cada push                   |
-| 🔍 **Modelo de calidad** | Implementa el modelo **SQALE** para deuda técnica         |
-
-### Modelo de Calidad que implementa
-
-SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Lifecycle Expectations)**, que evalúa la calidad del software en cinco dimensiones:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│              MODELO DE CALIDAD SQALE                    │
-├────────────────┬────────────────────────────────────────┤
-│  Dimensión     │  Descripción                           │
-├────────────────┼────────────────────────────────────────┤
-│  Reliability   │  Comportamiento estable bajo condiciones│
-│                │  normales y de error                   │
-├────────────────┼────────────────────────────────────────┤
-│  Security      │  Protección contra vulnerabilidades    │
-├────────────────┼────────────────────────────────────────┤
-│  Maintainability│  Facilidad para modificar el código   │
-├────────────────┼────────────────────────────────────────┤
-│  Coverage      │  Porcentaje de código cubierto por tests│
-├────────────────┼────────────────────────────────────────┤
-│  Duplications  │  Nivel de código duplicado             │
-└────────────────┴────────────────────────────────────────┘
-```
-
----
-
-## 📈 Resultados del Análisis
-
-> Primer análisis ejecutado el **15 de marzo de 2026 a las 18:48** sobre la rama `master` — 7.5k líneas de código (JSP + Java).
-
----
-
-### Summary del Proyecto
-
-![Summary SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-summary.png)
-
-> **📋 Descripción:** Vista principal del proyecto en SonarCloud luego del primer análisis. Se observa el estado general de las tres dimensiones principales: **Security (A)**, **Reliability (D)** y **Maintainability (A)**. El Quality Gate aparece como `Not computed` al ser el primer escaneo. También se destacan 127 Security Hotspots sin revisar, una duplicación del **39.7%** sobre 8.9k líneas, y cobertura sin configurar aún.
-
----
-
-### Project Health Dashboard (Overview)
-
-> ![Overview Dashboard SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-overiew-general.png)
+> Fork of [HospitalManagement](https://github.com/rid17pawar/HospitalManagement) by rid17pawar, focused on the progressive analysis, identification, and improvement of technical debt within the system.
 >
-> **📋 Descripción:** Vista del _Project Health Dashboard_ con las métricas globales consolidadas: **549 issues abiertos** en total, duplicación del **39.7%** sin cambios en los últimos 30 días, cobertura sin datos disponibles y Quality Gate sin calcular. Este panel es el punto de entrada para evaluar la salud general del repositorio de un vistazo.
+> **Course:** CSDT_M — Software Quality and Technical Debt
 
 ---
 
-### Security Snapshot & Security Hotspots
+## 📌 Project Description
 
-> ![Security Snapshot SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-overview-security.png)
+A web-based system designed to replace traditional paper-based hospital workflows with a secure and efficient digital platform. Built with **Spring MVC** and **Hibernate** as the main frameworks, using **MySQL** as the database.
+
+### Main features of the original system
+
+- Patient and staff management
+- Automatic PDF prescription generation
+- OPD (Outpatient Department) queue management
+- Role-based modules: Doctor, Receptionist, and Administrator
+- Password encryption with BCrypt
+
+---
+
+## 🎯 Fork Objective
+
+This fork has an academic purpose: **iterative analysis and improvement of the technical debt** present in the original project. Over 8 weeks, the team will identify code smells, propose and apply refactorings, implement tests, analyze static metrics, and improve the architecture and development process, documenting each advancement weekly.
+
+---
+
+## 👥 Team Members
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/AndresSu2342">
+        <img src="https://github.com/AndresSu2342.png" width="100px;" alt="César Andrés Borray Suarez"/>
+        <br />
+        <sub><b>César Andrés Borray Suarez</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/JuanEstebanMedina">
+        <img src="https://github.com/JuanEstebanMedina.png" width="100px;" alt="Juan Esteban Medina Rivas"/>
+        <br />
+        <sub><b>Juan Esteban Medina Rivas</b></sub>
+      </a>
+    </td>
+
+  </tr>
+  <tr>
+  <td align="center">
+      <a href="https://github.com/LauraRo166">
+        <img src="https://github.com/LauraRo166.png" width="100px;" alt="Laura Daniela Rodríguez Sánchez"/>
+        <br />
+        <sub><b>Laura Daniela Rodríguez Sánchez</b></sub>
+      </a>
+    </td>
+
+  <td align="center">
+      <a href="https://github.com/hakki17">
+        <img src="https://github.com/hakki17.png" width="100px;" alt="Maria Paula Sánchez Macías"/>
+        <br />
+        <sub><b>Maria Paula Sánchez Macías</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📚 Weekly Reports Index
+
+|  #  | Topic                                  | Report                                                       |
+| :-: | -------------------------------------- | ------------------------------------------------------------ |
+|  0  | 📄 Original README                     | [View report](./weekly-reports/11-02-2026-READMEoriginal.md) |
+|  1  | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11-02-2026-CodeSmells.md)     |
+|  2  | 🧹 Clean Code & XP Practices           | [View report](./weekly-reports/22-02-2026-CleanCode.md)      |
+|  3  | 🧪 Testing Debt                        | _Coming soon_                                                |
+|  4  | 📊 Static Analysis                     | _Coming soon_                                                |
+|  5  | 🚀 DevEx & SPACE                       | _Coming soon_                                                |
+|  6  | ⚙️ Technical Debt in Processes         | _Coming soon_                                                |
+|  7  | 🏛️ Technical Debt in Architecture      | _Coming soon_                                                |
+
+---
+
+### Index Detail
+
+#### 0. 📄 Original README
+
+> The original README from the forked project, preserved as a reference for the system's initial documentation.
 >
-> **📋 Descripción:** Panel de seguridad dividido en dos secciones. La primera muestra el **Security Rating A** con 0 vulnerabilidades activas confirmadas. La segunda muestra el **Security Hotspot Snapshot** con 127 hotspots identificados, todos en estado "To Review" (100%), lo que resulta en un **Security Review Rating E** — la peor calificación posible para esta métrica.
+> 📎 [11-02-2026-READMEoriginal.md](./weekly-reports/11-02-2026-READMEoriginal.md)
 
 ---
 
-### Reliability & Maintainability Snapshot
+#### 1. 🚨 Code Smells & Refactoring Proposals
 
-> ![Reliability y Maintainability SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-overview-reliability-maintanibility.png)
+> Identification of the main code smells present in the system's source code (Tight Coupling, God Class, Poor Exception Handling, Magic Numbers, among others) and concrete refactoring proposals for each one.
 >
-> **📋 Descripción:** Snapshot de las dos dimensiones más representativas del análisis. **Reliability** obtiene Rating **D** con 338 issues distribuidos en 27% Alta y 73% Media severidad. **Maintainability** obtiene Rating **A** a pesar de tener 408 issues, con un único punto de datos disponible al 15 de marzo — primer análisis registrado.
+> 📎 [13-02-2026-CodeSmells.md](./weekly-reports/13-02-2026-CodeSmells.md)
 
 ---
 
-### Tarjeta Resumen del Proyecto
+#### 2. 🧹 Clean Code & XP Practices
 
-> ![Tarjeta resumen SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-general-analysis.png)
+> Evaluation of all 8 Clean Code characteristics against the codebase, analysis of violated YAGNI/KISS/DRY/SOLID principles with real code examples, and recommendations of 8 XP practices to improve code quality.
 >
-> **📋 Descripción:** Tarjeta compacta del proyecto `HospitalManagementRefactor` en el listado de la organización _Escuela Colombiana de Ingeniería CSDT_. Muestra todos los ratings consolidados: Security **A**, Reliability **D**, Maintainability **A**, Hotspots Reviewed **E (0.0%)** y Duplications **39.7%**. Fecha del último análisis: 15/03/2026 a las 18:48.
+> 📎 [22-02-2026-CleanCode.md](./weekly-reports/22-02-2026-CleanCode.md)
 
 ---
 
-### Vista de Issues Detallados
+#### 3. 🧪 Testing Debt
 
-> ![Issues detallados SonarCloud](weekly-reports\imgs\static-analysis\sonarcloud-issues.png)
+> Evaluation of testing debt: absence of unit and integration tests, code coverage, testing strategy proposals, and first implementations.
 >
-> **📋 Descripción:** Panel de Issues con filtros activos por Software Quality y Severidad. Se listan **549 issues** con esfuerzo estimado de **6 días y 3 horas**. Issues visibles: _"Remove this commented out code"_ (pom.xml L15), _"Remove this field injection and use constructor injection instead"_ (EditLoginDetailsController.java L21, L24), _"Replace @RequestMapping with @PostMapping"_ (L47), _"Define a constant instead of duplicating literal 'userInfo'"_ (L53) y _"Make Login serializable or don't store it in the session"_ (L62). Distribución: **114 High**, **330 Medium**, **106 Low**, sin Blockers.
+> 📎 [22-02-2026-CleanCode.md](./weekly-reports/15-3-2026-StaticAnalysis.md)
 
 ---
 
-## 🔗 Relación con Hallazgos Previos
+#### 4. 📊 Static Analysis
 
-Los resultados de SonarCloud **confirman y cuantifican** los problemas identificados en semanas anteriores:
-
-| Semana               | Hallazgo Manual                      | Confirmación SonarCloud                                  |
-| -------------------- | ------------------------------------ | -------------------------------------------------------- |
-| Sem 1 - Code Smells  | Tight Coupling, Field Injection      | ✅ 338 Reliability issues, field injection detectado     |
-| Sem 1 - Code Smells  | Magic Numbers / Literales duplicados | ✅ "Define a constant" - Critical issues                 |
-| Sem 1 - Code Smells  | Poor Exception Handling              | ✅ Bugs de manejo de nulos en sesión                     |
-| Sem 2 - Clean Code   | Violación DRY                        | ✅ 39.7% de duplicación confirmada                       |
-| Sem 2 - Clean Code   | Anotaciones Spring desactualizadas   | ✅ Replace `@RequestMapping` con anotaciones específicas |
-| Sem 3 - Testing Debt | Sin pruebas unitarias                | ✅ Coverage: sin datos disponibles                       |
+> Static code analysis using tools such as SonarQube, Checkstyle, or SpotBugs. Report on quality metrics, cyclomatic complexity, and rule violations.
+>
+> 📎 _Coming soon_
 
 ---
 
-## 🧠 Análisis con IA Complementario
+#### 5. 🚀 DevEx & SPACE
 
-Para complementar el análisis estático de SonarCloud, utilizamos **Claude (Anthropic)** como asistente de IA para:
-
-1. **Interpretar los issues detectados** y relacionarlos con patrones de deuda técnica conocidos
-2. **Proponer refactorizaciones** concretas para los issues de mayor impacto
-3. **Priorizar** qué issues atacar primero según severidad y esfuerzo
-
-**Hallazgo clave con IA:** La IA identificó que los **338 issues de Reliability** son en su mayoría consecuencia de una decisión arquitectónica original: usar **field injection** en lugar de **constructor injection** en todos los controladores y DAOs. Corregir este patrón de forma sistemática reduciría simultáneamente issues de Reliability y Maintainability, y habilitaría la escritura de pruebas unitarias (ya que el constructor injection facilita el mockeo).
+> Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
+>
+> 📎 _Coming soon_
 
 ---
 
-## 💡 Conclusiones
+#### 6. ⚙️ Technical Debt in Processes
 
-1. **SonarCloud es una herramienta poderosa y accesible** para proyectos académicos. La integración con GitHub fue sencilla y los resultados del primer análisis fueron inmediatos y muy informativos.
-
-2. **El mayor problema del proyecto es la Reliability (Rating D)**: 338 issues, 91 de severidad Alta, concentrados principalmente en patrones arquitectónicos como field injection y falta de serialización.
-
-3. **La duplicación del 39.7% es alarmante** y refleja la ausencia de principios DRY en el diseño original. Refactorizar las vistas JSP con templates o fragments reduciría drásticamente este número.
-
-4. **La ausencia de cobertura de pruebas** no solo es una deuda técnica en sí misma, sino que impide que SonarCloud calcule el Quality Gate correctamente, lo que significa que el equipo no tiene visibilidad completa del estado de calidad.
-
-5. **Los hallazgos de SonarCloud son consistentes con el análisis manual** realizado en las semanas anteriores, lo que valida el enfoque del equipo y demuestra que el análisis estático automatizado y el análisis manual se complementan eficazmente.
-
-6. **El Quality Gate "Not computed"** cambiará en el próximo análisis. Se recomienda que el equipo configure un Quality Gate personalizado que incluya umbrales de coverage y duplicación para futuras entregas.
+> Identification of technical debt in development processes: lack of CI/CD, absence of formal code reviews, dependency management, process documentation, etc.
+>
+> 📎 _Coming soon_
 
 ---
 
-## 🔗 Recursos
+#### 7. 🏛️ Technical Debt in Architecture
 
-- 🔗 [SonarCloud — Proyecto HospitalManagementRefactor](https://sonarcloud.io)
-- 🔗 [Repositorio GitHub](https://github.com/Escuela-Colombiana-de-Ingenieria-CSDT/HospitalManagementRefactor)
-- 📖 [Documentación SonarCloud](https://docs.sonarcloud.io)
-- 📖 [Modelo SQALE](https://www.sonarsource.com/docs/CognitiveComplexity.pdf)
-- 📖 [CWE — Common Weakness Enumeration](https://cwe.mitre.org)
-- 📖 [Top 40 Static Code Analysis Tools](https://www.softwaretestinghelp.com/tools/top-40-static-code-analysis-tools/)
+> Structural analysis of the system's architecture: layer violations, absence of architectural patterns, circular dependencies, inter-module coupling, and improvement proposals.
+>
+> 📎 _Coming soon_
 
 ---
 
-_CSDT_M — Software Quality and Technical Debt | Escuela Colombiana de Ingeniería | 2026_
+_[⬆ Back to top](#-hospital-management-system)_
+
+---
+
+**CSDT_M — Software Quality and Technical Debt | 2026**
