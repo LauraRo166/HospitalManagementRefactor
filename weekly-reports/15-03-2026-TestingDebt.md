@@ -2,7 +2,7 @@
 
 > **Week 3 — March 15, 2026** | Course: CSDT_M — Software Quality and Technical Debt
 
-**📌 Related Analysis:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md) | [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
+**📌 Related Analysis:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md) | [📋 First Delivery 2026](../CSDT_PrimeraEntrega2026.md)
 
 ---
 
@@ -891,11 +891,11 @@ mvn test
 
 ---
 
-## 🔗 Relacionados
+## 🔗 Related
 
-- **Siguiente:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md)
-- **Resumen:** [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
-- **Inicio:** [📚 README Principal](../README.md)
+- **Next:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md)
+- **Summary:** [📋 First Delivery 2026](../CSDT_PrimeraEntrega2026.md)
+- **Home:** [📚 Main Project README](../README.md)
 
 ---
 
