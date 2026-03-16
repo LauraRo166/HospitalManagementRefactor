@@ -2,6 +2,8 @@
 
 > **Week 3 — March 15, 2026** | Course: CSDT_M — Software Quality and Technical Debt
 
+**📌 Related Analysis:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md) | [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
+
 ---
 
 ## 📋 Table of Contents
@@ -372,54 +374,6 @@ public ModelAndView validate(
 | 5 | No input validation | 🟠 HIGH | All controllers | Security & quality risk |
 
 **Total Debt Cost:** 50-80 hours to implement basic coverage + refactoring
-
----
-
-## ✅ Unit Testing Implementation Plan
-
-### Phase 0: Testing Debt Analysis ✅ COMPLETED (This Document)
-- ✅ **Point 1: Identified 5 critical Testing Debt practices**
-  - Absence of test suite (0% coverage)
-  - Tight coupling to DAO layer
-  - Generic exception handling
-  - Long parameter lists
-  - No input validation
-- ✅ Documented with specific code examples from HMS project
-- ✅ Analyzed impact and cost of each debt practice
-- ✅ Provided recommendations for remediation
-
-### Phase 1: Infrastructure Setup 📋 PLANNED
-- Add JUnit 5 to pom.xml
-- Add Mockito to pom.xml
-- Create src/test/java directory structure
-- Configure Maven Surefire plugin
-
-### Phase 2: Initial Test Suite 📋 PLANNED
-- LoginControllerTest (4-5 tests)
-- LogOutControllerTest (2-3 tests)
-- EditLoginDetailsControllerTest (3-5 tests)
-- AddEmployeeControllerTest (4-6 tests)
-- SearchEmployeeControllerTest (4-6 tests)
-
-### Phase 3: Refactoring for Testability 📋 PLANNED
-- Extract service layer interfaces
-- Constructor injection instead of field injection
-- DTO for parameter grouping
-- Input validation layer
-
-### Phase 4: Expanded Coverage 📋 PLANNED
-- DAO layer tests (20+ tests)
-- Integration tests (15+ tests)
-- E2E tests (5+ tests)
-
----
-
-## 🔗 Related Documents
-
-- [Code Smells Analysis](./13-02-2026-CodeSmells.md)
-- [Clean Code Evaluation](./22-02-2026-CleanCode.md)
-
----
 
 ## 📚 Appendix
 
@@ -934,3 +888,18 @@ Total time: 10.981 s
 ```bash
 mvn test
 ```
+
+---
+
+## 🔗 Relacionados
+
+- **Siguiente:** [📊 Static Analysis with SonarCloud](./15-03-2026-StaticAnalysis.md)
+- **Resumen:** [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
+- **Inicio:** [📚 README Principal](../README.md)
+
+---
+
+_[⬆ Back to top](#-testing-debt--unit-testing-implementation)_
+
+**CSDT_M — Software Quality and Technical Debt | 2026**
+

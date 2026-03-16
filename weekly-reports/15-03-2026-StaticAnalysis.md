@@ -8,6 +8,8 @@
 > **Rama analizada:** `master`
 > **Líneas de código:** ~7.5k (JSP, Java)
 
+**📌 Related Analysis:** [🧪 Testing Debt & Unit Testing Implementation](./15-03-2026-TestingDebt.md) | [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
+
 ---
 
 ## 🧰 Herramienta Utilizada: SonarCloud
@@ -149,4 +151,15 @@ Para complementar el análisis estático de SonarCloud, utilizamos **Claude (Ant
 
 ---
 
-_CSDT_M — Software Quality and Technical Debt | Escuela Colombiana de Ingeniería | 2026_
+## 🔗 Relacionados
+
+- **Anterior:** [🧪 Testing Debt & Unit Testing Implementation](./15-03-2026-TestingDebt.md)
+- **Resumen:** [📋 Primera Entrega 2026](../CSDT_PrimeraEntrega2026.md)
+- **Inicio:** [📚 README Principal](../README.md)
+
+---
+
+_[⬆ Back to top](#-csdt--primera-entrega-2026)_
+
+**CSDT_M — Software Quality and Technical Debt | Escuela Colombiana de Ingeniería | 2026**
+

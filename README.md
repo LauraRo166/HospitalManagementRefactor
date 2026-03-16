@@ -76,7 +76,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 0 | 📄 Original README | [View report](./weekly-reports/11-02-2026-READMEoriginal.md) |
 | 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/13-02-2026-CodeSmells.md) |
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
-| 3 | 🧪 Testing Debt | [View report](./weekly-reports/28-02-2026-TestingDebt.md) |
+| 3 | 🧪 Testing Debt | [View report](weekly-reports/15-03-2026-TestingDebt.md) |
 | 4 | 📊 Static Analysis | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md) |
 | 5 | 🚀 DevEx & SPACE | *Coming soon* |
 | 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
@@ -120,7 +120,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 >
 > Includes detailed code examples, impact analysis, and implementation roadmap for unit testing.
 >
-> 📎 [28-02-2026-TestingDebt.md](./weekly-reports/28-02-2026-TestingDebt.md)
+> 📎 [28-02-2026-TestingDebt.md](weekly-reports/15-03-2026-TestingDebt.md)
 
 ---
 
