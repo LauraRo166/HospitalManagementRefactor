@@ -60,7 +60,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Summary del Proyecto
 
-![Summary SonarCloud](weekly-reports/imgs/static-analysis/sonarcloud-summary.png)
+![Summary SonarCloud](./weekly-reports/imgs/static-analysis/sonarcloud-summary.png)
 
 > **📋 Descripción:** Vista principal del proyecto en SonarCloud luego del primer análisis. Se observa el estado general de las tres dimensiones principales: **Security (A)**, **Reliability (D)** y **Maintainability (A)**. El Quality Gate aparece como `Not computed` al ser el primer escaneo. También se destacan 127 Security Hotspots sin revisar, una duplicación del **39.7%** sobre 8.9k líneas, y cobertura sin configurar aún.
 
