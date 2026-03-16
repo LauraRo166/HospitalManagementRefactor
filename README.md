@@ -109,7 +109,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 #### 3. 🧪 Testing Debt
 > Evaluation of testing debt: absence of unit and integration tests, code coverage, testing strategy proposals, and first implementations.
 >
-> 📎 *Coming soon*
+> 📎 [22-02-2026-CleanCode.md](./weekly-reports/15-3-2026-StaticAnalysis.md)
 
 ---
 
