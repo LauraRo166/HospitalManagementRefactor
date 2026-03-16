@@ -77,7 +77,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 |  1  | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/11-02-2026-CodeSmells.md)     |
 |  2  | 🧹 Clean Code & XP Practices           | [View report](./weekly-reports/22-02-2026-CleanCode.md)      |
 |  3  | 🧪 Testing Debt                        | _Coming soon_                                                |
-|  4  | 📊 Static Analysis                     | _Coming soon_                                                |
+|  4  | 📊 Static Analysis                     | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md)                                                |
 |  5  | 🚀 DevEx & SPACE                       | _Coming soon_                                                |
 |  6  | ⚙️ Technical Debt in Processes         | _Coming soon_                                                |
 |  7  | 🏛️ Technical Debt in Architecture      | _Coming soon_                                                |
@@ -114,7 +114,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 > Evaluation of testing debt: absence of unit and integration tests, code coverage, testing strategy proposals, and first implementations.
 >
-> 📎 [22-02-2026-CleanCode.md](./weekly-reports/15-3-2026-StaticAnalysis.md)
+> 📎 _Coming soon_
 
 ---
 

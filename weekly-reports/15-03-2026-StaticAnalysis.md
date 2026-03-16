@@ -31,24 +31,13 @@
 
 SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Lifecycle Expectations)**, que evalúa la calidad del software en cinco dimensiones:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              MODELO DE CALIDAD SQALE                    │
-├────────────────┬────────────────────────────────────────┤
-│  Dimensión     │  Descripción                           │
-├────────────────┼────────────────────────────────────────┤
-│  Reliability   │  Comportamiento estable bajo condiciones│
-│                │  normales y de error                   │
-├────────────────┼────────────────────────────────────────┤
-│  Security      │  Protección contra vulnerabilidades    │
-├────────────────┼────────────────────────────────────────┤
-│  Maintainability│  Facilidad para modificar el código   │
-├────────────────┼────────────────────────────────────────┤
-│  Coverage      │  Porcentaje de código cubierto por tests│
-├────────────────┼────────────────────────────────────────┤
-│  Duplications  │  Nivel de código duplicado             │
-└────────────────┴────────────────────────────────────────┘
-```
+| Dimensión | Descripción |
+|---|---|
+| Reliability | Comportamiento estable bajo condiciones normales y de error |
+| Security | Protección contra vulnerabilidades |
+| Maintainability | Facilidad para modificar el código |
+| Coverage | Porcentaje de código cubierto por tests |
+| Duplications | Nivel de código duplicado |
 
 ---
 
@@ -68,7 +57,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Project Health Dashboard (Overview)
 
-> ![Overview Dashboard SonarCloud](imgs/static-analysis/sonarcloud-overiew-general.png)
+![Overview Dashboard SonarCloud](imgs/static-analysis/sonarcloud-overiew-general.png)
 >
 > **📋 Descripción:** Vista del _Project Health Dashboard_ con las métricas globales consolidadas: **549 issues abiertos** en total, duplicación del **39.7%** sin cambios en los últimos 30 días, cobertura sin datos disponibles y Quality Gate sin calcular. Este panel es el punto de entrada para evaluar la salud general del repositorio de un vistazo.
 
@@ -76,7 +65,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Security Snapshot & Security Hotspots
 
-> ![Security Snapshot SonarCloud](imgs/static-analysis/sonarcloud-overview-security.png)
+![Security Snapshot SonarCloud](imgs/static-analysis/sonarcloud-overview-security.png)
 >
 > **📋 Descripción:** Panel de seguridad dividido en dos secciones. La primera muestra el **Security Rating A** con 0 vulnerabilidades activas confirmadas. La segunda muestra el **Security Hotspot Snapshot** con 127 hotspots identificados, todos en estado "To Review" (100%), lo que resulta en un **Security Review Rating E** — la peor calificación posible para esta métrica.
 
@@ -84,7 +73,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Reliability & Maintainability Snapshot
 
-> ![Reliability y Maintainability SonarCloud](imgs/static-analysis/sonarcloud-overview-reliability-maintanibility.png)
+![Reliability y Maintainability SonarCloud](imgs/static-analysis/sonarcloud-overview-reliability-maintanibility.png)
 >
 > **📋 Descripción:** Snapshot de las dos dimensiones más representativas del análisis. **Reliability** obtiene Rating **D** con 338 issues distribuidos en 27% Alta y 73% Media severidad. **Maintainability** obtiene Rating **A** a pesar de tener 408 issues, con un único punto de datos disponible al 15 de marzo — primer análisis registrado.
 
@@ -92,7 +81,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Tarjeta Resumen del Proyecto
 
-> ![Tarjeta resumen SonarCloud](imgs/static-analysis/sonarcloud-general-analysis.png)
+![Tarjeta resumen SonarCloud](imgs/static-analysis/sonarcloud-general-analysis.png)
 >
 > **📋 Descripción:** Tarjeta compacta del proyecto `HospitalManagementRefactor` en el listado de la organización _Escuela Colombiana de Ingeniería CSDT_. Muestra todos los ratings consolidados: Security **A**, Reliability **D**, Maintainability **A**, Hotspots Reviewed **E (0.0%)** y Duplications **39.7%**. Fecha del último análisis: 15/03/2026 a las 18:48.
 
@@ -100,7 +89,7 @@ SonarCloud se basa en el modelo **SQALE (Software Quality Assessment based on Li
 
 ### Vista de Issues Detallados
 
-> ![Issues detallados SonarCloud](imgs/static-analysis/sonarcloud-issues.png)
+![Issues detallados SonarCloud](imgs/static-analysis/sonarcloud-issues.png)
 >
 > **📋 Descripción:** Panel de Issues con filtros activos por Software Quality y Severidad. Se listan **549 issues** con esfuerzo estimado de **6 días y 3 horas**. Issues visibles: _"Remove this commented out code"_ (pom.xml L15), _"Remove this field injection and use constructor injection instead"_ (EditLoginDetailsController.java L21, L24), _"Replace @RequestMapping with @PostMapping"_ (L47), _"Define a constant instead of duplicating literal 'userInfo'"_ (L53) y _"Make Login serializable or don't store it in the session"_ (L62). Distribución: **114 High**, **330 Medium**, **106 Low**, sin Blockers.
 
