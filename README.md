@@ -1,4 +1,5 @@
 # 🏥 Hospital Management System
+
 ## Technical Debt Analysis & Improvement
 
 > Fork of [HospitalManagement](https://github.com/rid17pawar/HospitalManagement) by rid17pawar, focused on the progressive analysis, identification, and improvement of technical debt within the system.
@@ -45,7 +46,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
         <sub><b>Juan Esteban Medina Rivas</b></sub>
       </a>
     </td>
-  
+
   </tr>
   <tr>
   <td align="center">
@@ -76,7 +77,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/13-02-2026-CodeSmells.md) |
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
 | 3 | 🧪 Testing Debt | [View report](./weekly-reports/28-02-2026-TestingDebt.md) |
-| 4 | 📊 Static Analysis | *Coming soon* |
+| 4 | 📊 Static Analysis | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md) |
 | 5 | 🚀 DevEx & SPACE | *Coming soon* |
 | 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
 | 7 | 🏛️ Technical Debt in Architecture | *Coming soon* |
@@ -86,6 +87,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ### Index Detail
 
 #### 0. 📄 Original README
+
 > The original README from the forked project, preserved as a reference for the system's initial documentation.
 >
 > 📎 [11-02-2026-READMEoriginal.md](./weekly-reports/11-02-2026-READMEoriginal.md)
@@ -93,6 +95,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ---
 
 #### 1. 🚨 Code Smells & Refactoring Proposals
+
 > Identification of the main code smells present in the system's source code (Tight Coupling, God Class, Poor Exception Handling, Magic Numbers, among others) and concrete refactoring proposals for each one.
 >
 > 📎 [13-02-2026-CodeSmells.md](./weekly-reports/13-02-2026-CodeSmells.md)
@@ -100,6 +103,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ---
 
 #### 2. 🧹 Clean Code & XP Practices
+
 > Evaluation of all 8 Clean Code characteristics against the codebase, analysis of violated YAGNI/KISS/DRY/SOLID principles with real code examples, and recommendations of 8 XP practices to improve code quality.
 >
 > 📎 [22-02-2026-CleanCode.md](./weekly-reports/22-02-2026-CleanCode.md)
@@ -121,34 +125,38 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 ---
 
 #### 4. 📊 Static Analysis
+
 > Static code analysis using tools such as SonarQube, Checkstyle, or SpotBugs. Report on quality metrics, cyclomatic complexity, and rule violations.
 >
-> 📎 *Coming soon*
+> 📎 [15-03-2026-staticAnalysis.md](./weekly-reports/15-03-2026-StaticAnalysis.md)
 
 ---
 
 #### 5. 🚀 DevEx & SPACE
+
 > Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
 >
-> 📎 *Coming soon*
+> 📎 _Coming soon_
 
 ---
 
 #### 6. ⚙️ Technical Debt in Processes
+
 > Identification of technical debt in development processes: lack of CI/CD, absence of formal code reviews, dependency management, process documentation, etc.
 >
-> 📎 *Coming soon*
+> 📎 _Coming soon_
 
 ---
 
 #### 7. 🏛️ Technical Debt in Architecture
+
 > Structural analysis of the system's architecture: layer violations, absence of architectural patterns, circular dependencies, inter-module coupling, and improvement proposals.
 >
-> 📎 *Coming soon*
+> 📎 _Coming soon_
 
 ---
 
-*[⬆ Back to top](#-hospital-management-system)*
+_[⬆ Back to top](#-hospital-management-system)_
 
 ---
 
