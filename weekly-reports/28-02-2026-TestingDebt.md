@@ -863,6 +863,74 @@ The workshop requires completing **Points 2 and 3**:
 
 **Testing Debt Status:** HIGH RISK - Immediate action required
 
+---
 
+## 🧪 Implemented Unit Tests (Point 2)
 
+### Infrastructure Changes
 
+- **`pom.xml`** updated: JUnit 3.8.1 → **JUnit 5.10.2** (Jupiter) + **Mockito 5.11.0** + **Maven Surefire 3.2.5**
+- Created `src/test/java/` directory structure mirroring production packages
+- Java compiler set to **JDK 11**
+
+### Testing Methodology
+
+- **Principle:** FIRST (Fast, Independent, Repeatable, Self-validating, Timely)
+- **Pattern:** AAA (Arrange, Act, Assert)
+- **Naming convention:** `test[FeatureBeingTested]` — e.g., `testPatientIsCreatedWithAllFields`
+- **Mocking:** Mockito `@Mock` + `@InjectMocks` to isolate DAOs from Hibernate/MySQL
+
+---
+
+### Entity Tests (6 classes, 34 tests)
+
+| Test Class | Tests | What is tested |
+|---|:-:|---|
+| `NameTest` | 5 | Constructor, null middleName, empty strings, toString, default constructor |
+| `AddressTest` | 3 | Both fields, null permanent address, toString |
+| `LoginTest` | 5 | All fields, null id, null password, toString, all 3 roles |
+| `PatientTest` | 7 | Full constructor, embedded Name, embedded Address, registration date set/null, doctorId change, toString |
+| `OpdTest` | 9 | Constructor, PENDING/DONE constants, status transitions (pending→printing→done), visitDate set/null, toString |
+| `OpdDetailsTest` | 5 | Full constructor, opdId setter, default constructor nulls, fees update, toString |
+
+---
+
+### DAO Tests — Patient & Reception Module (4 classes, 30 tests)
+
+| Test Class | Tests | What is tested |
+|---|:-:|---|
+| `AddPatientDaoTest` | 4 | `add()` saves patient and sets registration date; `getDoctors()` returns mapped doctor arrays; empty list when no doctors |
+| `SearchPatientDaoTest` | 11 | `searchName()` found/not-found/error; `searchId()` found/not-found; `searchMobileNo()` found/not-found; `searchAdharNo()` found/error; `searchDoctorAssigned()` returns name / error |
+| `DeleteOpdDaoTest` | 7 | `delete()` success/no-match/error; `prescriptionPrint()` updates status to 2; `prescriptionPrintDone()` success/error; only PENDING records affected |
+| `PatientPrescriptionDaoTest` | 8 | `prescriptionPrintCount()` correct/zero/error; `getPatientName()` found/not-found/error; `getPrescriptionList()` correct mapping / error |
+
+---
+
+### Execution Results
+
+```
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Tests run: 7,  Failures: 0, Errors: 0 -- DeleteOpdDaoTest
+Tests run: 4,  Failures: 0, Errors: 0 -- AddPatientDaoTest
+Tests run: 8,  Failures: 0, Errors: 0 -- PatientPrescriptionDaoTest
+Tests run: 11, Failures: 0, Errors: 0 -- SearchPatientDaoTest
+Tests run: 3,  Failures: 0, Errors: 0 -- AddressTest
+Tests run: 5,  Failures: 0, Errors: 0 -- LoginTest
+Tests run: 5,  Failures: 0, Errors: 0 -- NameTest
+Tests run: 5,  Failures: 0, Errors: 0 -- OpdDetailsTest
+Tests run: 9,  Failures: 0, Errors: 0 -- OpdTest
+Tests run: 7,  Failures: 0, Errors: 0 -- PatientTest
+
+Tests run: 64, Failures: 0, Errors: 0, Skipped: 0
+
+BUILD SUCCESS
+Total time: 10.981 s
+```
+
+### How to Run
+
+```bash
+mvn test
+```
