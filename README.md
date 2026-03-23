@@ -78,7 +78,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
 | 3 | 🧪 Testing Debt | [View report](weekly-reports/15-03-2026-TestingDebt.md) |
 | 4 | 📊 Static Analysis | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md) |
-| 5 | 🚀 DevEx & SPACE | *Coming soon* |
+| 5 | 🚀 DevEx & SPACE | [View SPACE report](./weekly-reports/22-03-2026-SPACE_Report.md) |
 | 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
 | 7 | 🏛️ Technical Debt in Architecture | *Coming soon* |
 
@@ -136,8 +136,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 > Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
 >
-> 📎 _Coming soon_
-
+> 📎 [22-03-2026-SPACE_Report.md](./weekly-reports/22-03-2026-SPACE_Report.md) (SPACE Analysis)
 ---
 
 #### 6. ⚙️ Technical Debt in Processes
