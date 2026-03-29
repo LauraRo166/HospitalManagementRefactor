@@ -8,6 +8,10 @@
   <name>HospitalManagement Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
+	<properties>
+		<sonar.organization>csdt-eci</sonar.organization>
+	</properties>
+
   <!--
    ***** pom stands for Project Object Model *****
   -->
@@ -132,6 +136,7 @@
 						</execution>
 						<execution>
 							<id>report</id>
+							<phase>verify</phase>
 							<goals>
 								<goal>report</goal>
 							</goals>
