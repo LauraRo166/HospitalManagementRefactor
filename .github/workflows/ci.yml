@@ -33,3 +33,52 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: >
           mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar-Dsonar.token=${SONAR_TOKEN}
+
+      - name: 🤖 Bot - Comentar resultado en PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            // Elimina comentarios anteriores del bot para no acumular
+            const botComment = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('🤖 CI Report')
+            );
+            if (botComment) {
+              await github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+              });
+            }
+
+            const status = '${{ job.status }}' === 'success' ? '✅' : '❌';
+            const sonarUrl = 'https://sonarcloud.io/project/overview?id=${{ secrets.SONAR_PROJECT_KEY }}';
+
+            const body = `## 🤖 CI Report
+
+            | Step | Estado |
+            |------|--------|
+            | 🔨 Build | ${status} |
+            | 🧪 Unit Tests | ${status} |
+            | 🔍 Sonar Analysis | ${status} [Ver reporte](${sonarUrl}) |
+
+            **Commit:** \`${{ github.sha }}\`
+            **Branch:** \`${{ github.head_ref }}\`
+            **Ejecutado por:** @${{ github.actor }}
+
+            > _Actualizado automáticamente con cada push al PR_`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
+
