@@ -72,8 +72,35 @@ jobs:
               });
             }
 
+            // Obtén los datos del PR y commits
+            const { data: prData } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const { data: commits } = await github.rest.pulls.listCommits({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 5,
+            });
+
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 10,
+            });
+
             const status = '${{ job.status }}' === 'success' ? '✅' : '❌';
             const sonarUrl = 'https://sonarcloud.io/project/overview?id=CSDT-ECI_HospitalManagementRefactor';
+
+            // Construye lista de commits
+            const commitsList = commits.map(c => `- \`${c.sha.substring(0, 7)}\` ${c.commit.message.split('\\n')[0]}`).join('\\n');
+
+            // Construye lista de archivos modificados
+            const filesList = files.map(f => `- ${f.status.padEnd(8)} \`${f.filename}\``).join('\\n');
 
             const body = `## 🤖 CI Report
 
@@ -83,8 +110,20 @@ jobs:
             | 🧪 Unit Tests | ${status} |
             | 🔍 Sonar Analysis | ${status} [Ver reporte](${sonarUrl}) |
 
+            ---
+
+            ### 📝 Cambios en este PR
+
+            **Commits:**
+            ${commitsList}
+
+            **Archivos Modificados (${files.length}):**
+            ${filesList}
+
+            ---
+
             **Commit:** \`${{ github.sha }}\`
-            **Branch:** \`${{ github.head_ref }}\`
+            **Branch:** \`${{ github.head_ref }}\` → \`${{ github.base_ref }}\`
             **Ejecutado por:** @${{ github.actor }}
 
             > _Actualizado automáticamente con cada push al PR_`;

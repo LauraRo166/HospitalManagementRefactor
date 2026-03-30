@@ -20,10 +20,11 @@ A new step was implemented in the CI/CD pipeline that automates the publication 
 ### Functionality
 The `🤖 Bot - Comment PR Result` step performs the following operations:
 
-#### a) Previous Comments Management
+#### a) Comment Management
 - Retrieves the list of existing comments in the PR
 - Searches for and deletes previous bot comments containing "🤖 CI Report"
 - Prevents accumulation of duplicate comments
+- Ensures only the latest CI report is visible
 
 #### b) Report Generation
 The bot creates a markdown-formatted comment that includes:
@@ -31,15 +32,33 @@ The bot creates a markdown-formatted comment that includes:
   - 🔨 Build
   - 🧪 Unit Tests
   - 🔍 Sonar Analysis (with direct link to analysis)
-- **Context Information**:
-  - Commit SHA
-  - Working branch
-  - User who executed the pipeline
 
-#### c) Conditional Execution
+#### c) Enhanced Change Summary
+The bot automatically extracts and displays:
+- **Commit Information**:
+  - List of commits with message preview (up to 5 most recent)
+  - Abbreviated commit hash for quick reference
+- **File Changes**:
+  - All modified files with change type (added, modified, removed, etc.)
+  - File paths for easy navigation
+  - Total count of changed files
+- **Context Information**:
+  - Full commit SHA
+  - Source branch → target branch flow
+  - User who triggered the pipeline
+
+#### d) Conditional Execution
 - Only executes when the event is `pull_request`
 - Uses `actions/github-script@v7` to interact with GitHub API
-- Requires read/write permissions on issues
+- Requires read/write permissions on issues and pull requests
+
+### Benefits of Enhanced Comments
+
+- ✅ **Transparency**: Complete visibility into what changed without leaving the PR
+- ✅ **Audit Trail**: All commits and file changes preserved in PR history
+- ✅ **Reduced Context Switching**: No need to check out branch or review history separately
+- ✅ **Quick Assessment**: Reviewers immediately see scope and nature of changes
+- ✅ **CI Status Integration**: All CI results in one convenient comment
 
 ### Required Configuration
 For proper operation, the following secrets must be configured in the repository:
