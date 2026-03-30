@@ -97,10 +97,10 @@ jobs:
             const sonarUrl = 'https://sonarcloud.io/project/overview?id=CSDT-ECI_HospitalManagementRefactor';
 
             // Construye lista de commits
-            const commitsList = commits.map(c => `- \`${c.sha.substring(0, 7)}\` ${c.commit.message.split('\\n')[0]}`).join('\\n');
+            const commitsList = commits.map(c => `- \`${c.sha.substring(0, 7)}\` ${c.commit.message.split('\n')[0]}`).join('\n');
 
             // Construye lista de archivos modificados
-            const filesList = files.map(f => `- ${f.status.padEnd(8)} \`${f.filename}\``).join('\\n');
+            const filesList = files.map(f => `- ${f.status.padEnd(8)} \`${f.filename}\``).join('\n');
 
             const body = `## 🤖 CI Report
 
@@ -134,4 +134,3 @@ jobs:
               issue_number: context.issue.number,
               body,
             });
-
