@@ -43,8 +43,19 @@ The bot creates a markdown-formatted comment that includes:
 
 ### Required Configuration
 For proper operation, the following secrets must be configured in the repository:
-- `GITHUB_TOKEN`: Authentication token (included by default)
-- `SONAR_PROJECT_KEY`: Project key in SonarCloud
+- `GITHUB_TOKEN`: Authentication token (included by default in GitHub Actions)
+- `SONAR_TOKEN`: Token for SonarCloud authentication (generate from SonarCloud account settings)
+
+### SonarCloud Project Configuration
+The project `csdt-eci_HospitalManagementRefactor` must be created and linked in SonarCloud:
+1. Project exists at: https://sonarcloud.io/organizations/csdt-eci
+2. GitHub repository is linked for automatic PR analysis
+3. Main branch: `master`
+
+### GitHub Secrets Setup
+Add the following secret to your GitHub repository (Settings → Secrets and variables → Actions):
+- **Name**: `SONAR_TOKEN`
+- **Value**: Your SonarCloud authentication token
 
 ### Benefits
 - ✅ Immediate feedback to developers in the PR

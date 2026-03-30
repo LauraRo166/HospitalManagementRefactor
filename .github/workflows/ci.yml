@@ -33,6 +33,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+        with:
+          args: >
+            -Dsonar.projectKey=csdt-eci_HospitalManagementRefactor
+            -Dsonar.organization=csdt-eci
 
       - name: 🤖 Bot - Comentar resultado en PR
         if: github.event_name == 'pull_request'
