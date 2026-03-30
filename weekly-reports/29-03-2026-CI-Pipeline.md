@@ -65,20 +65,30 @@ Add the following secret to your GitHub repository (Settings → Secrets and var
 
 ### Technical Implementation
 ```yaml
-- name: 🤖 Bot - Comment PR Result
-  if: github.event_name == 'pull_request'
-  uses: actions/github-script@v7
+- name: Analyze with SonarCloud
+  uses: SonarSource/sonarqube-scan-action@v5.0.0
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    SONAR_HOST_URL: https://sonarcloud.io
   with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    script: |
-      # Logic for retrieving and deleting previous comments
-      # Report construction with status and URLs
-      # Comment publication in the PR
+    args: >
+      -Dsonar.projectKey=csdt-eci_HospitalManagementRefactor
+      -Dsonar.organization=csdt-eci
+      -Dsonar.branch.name=${{ github.ref_name }}
 ```
+
+### Troubleshooting
+If encountering "Could not find a default branch" error:
+1. **Verify project exists in SonarCloud**: https://sonarcloud.io/organizations/csdt-eci
+2. **Check ALM Binding**: Ensure GitHub repository is linked to the SonarCloud project
+3. **Verify branch name**: Confirm that the repository default branch matches the workflow trigger branches (`master`, `continuous-integration`)
+4. **Reconfigure project**: If needed, delete and recreate the project in SonarCloud with proper GitHub binding
 
 ---
 
 **Implementation Date**: March 29, 2026  
-**Status**: ✅ Completed
+**Status**: ✅ Completed  
+**Last Updated**: March 30, 2026 - Migration to sonarqube-scan-action@v5.0.0
 
 
