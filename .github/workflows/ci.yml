@@ -37,7 +37,7 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
-            -Dsonar.projectKey=csdt-eci_HospitalManagementRefactor
+            -Dsonar.projectKey=CSDT-ECI_HospitalManagementRefactor
             -Dsonar.organization=csdt-eci
             ${{ github.event_name == 'pull_request' &&
               format('-Dsonar.pullrequest.key={0} -Dsonar.pullrequest.branch={1} -Dsonar.pullrequest.base={2}',
