@@ -38,7 +38,12 @@ jobs:
           args: >
             -Dsonar.projectKey=csdt-eci_HospitalManagementRefactor
             -Dsonar.organization=csdt-eci
-            -Dsonar.branch.name=${{ github.ref_name }}
+            ${{ github.event_name == 'pull_request' &&
+              format('-Dsonar.pullrequest.key={0} -Dsonar.pullrequest.branch={1} -Dsonar.pullrequest.base={2}',
+                github.event.pull_request.number,
+                github.head_ref,
+                github.base_ref)
+              || format('-Dsonar.branch.name={0}', github.ref_name) }}
 
       - name: 🤖 Bot - Comentar resultado en PR
         if: github.event_name == 'pull_request'

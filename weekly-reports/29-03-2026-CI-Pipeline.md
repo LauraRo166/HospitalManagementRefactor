@@ -75,20 +75,36 @@ Add the following secret to your GitHub repository (Settings → Secrets and var
     args: >
       -Dsonar.projectKey=csdt-eci_HospitalManagementRefactor
       -Dsonar.organization=csdt-eci
-      -Dsonar.branch.name=${{ github.ref_name }}
+      ${{ github.event_name == 'pull_request' &&
+        format('-Dsonar.pullrequest.key={0} -Dsonar.pullrequest.branch={1} -Dsonar.pullrequest.base={2}',
+          github.event.pull_request.number,
+          github.head_ref,
+          github.base_ref)
+        || format('-Dsonar.branch.name={0}', github.ref_name) }}
 ```
 
-### Troubleshooting
-If encountering "Could not find a default branch" error:
-1. **Verify project exists in SonarCloud**: https://sonarcloud.io/organizations/csdt-eci
-2. **Check ALM Binding**: Ensure GitHub repository is linked to the SonarCloud project
-3. **Verify branch name**: Confirm that the repository default branch matches the workflow trigger branches (`master`, `continuous-integration`)
-4. **Reconfigure project**: If needed, delete and recreate the project in SonarCloud with proper GitHub binding
+### Root Cause Analysis & Resolution
+
+**Problem**: SonarCloud failed with "Could not find a default branch" error during PR analysis.
+
+**Root Cause**: When analyzing a pull request, `github.ref_name` returns an internal PR reference (e.g., `8/merge`) instead of the actual branch name. SonarCloud couldn't map this to any known branch.
+
+**Solution**: Implement conditional parameter passing:
+- **For Pull Requests**: Use `sonar.pullrequest.*` properties with correct metadata
+  - `pullrequest.key`: PR number
+  - `pullrequest.branch`: Source branch (via `github.head_ref`)
+  - `pullrequest.base`: Target branch (via `github.base_ref`)
+- **For Push Events**: Use `sonar.branch.name` with actual branch reference
+
+This ensures SonarCloud correctly identifies the context and associates the analysis with the proper branch configuration.
+
+### Troubleshooting (Resolved)
+✅ **"Could not find a default branch" error** - Fixed by using correct PR parameters
 
 ---
 
 **Implementation Date**: March 29, 2026  
 **Status**: ✅ Completed  
-**Last Updated**: March 30, 2026 - Migration to sonarqube-scan-action@v5.0.0
+**Last Updated**: March 30, 2026 - Fixed PR analysis with proper pullrequest parameters
 
 
