@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - continuous-integration
+      - master
   pull_request:
     branches:
       - master
