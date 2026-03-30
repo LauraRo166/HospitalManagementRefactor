@@ -11,6 +11,9 @@ on:
 jobs:
   build-test-sonar:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout repository
@@ -70,7 +73,7 @@ jobs:
             }
 
             const status = '${{ job.status }}' === 'success' ? '✅' : '❌';
-            const sonarUrl = 'https://sonarcloud.io/project/overview?id=${{ secrets.SONAR_PROJECT_KEY }}';
+            const sonarUrl = 'https://sonarcloud.io/project/overview?id=CSDT-ECI_HospitalManagementRefactor';
 
             const body = `## 🤖 CI Report
 
