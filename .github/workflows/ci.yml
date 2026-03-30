@@ -32,7 +32,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: >
-          mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar-Dsonar.token=${SONAR_TOKEN}
+          mvn -B clean verify sonar:sonar
+          -Dsonar.token=${SONAR_TOKEN}
 
       - name: 🤖 Bot - Comentar resultado en PR
         if: github.event_name == 'pull_request'
