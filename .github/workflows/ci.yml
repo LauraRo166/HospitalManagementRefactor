@@ -31,9 +31,14 @@ jobs:
       - name: Analyze with Sonar
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
         run: >
-          mvn -B clean verify sonar:sonar
+          mvn -B sonar:sonar
+          -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.token=${SONAR_TOKEN}
+          -Dsonar.organization=${SONAR_ORGANIZATION}
+          -Dsonar.projectKey=${SONAR_PROJECT_KEY}
 
       - name: 🤖 Bot - Comentar resultado en PR
         if: github.event_name == 'pull_request'
