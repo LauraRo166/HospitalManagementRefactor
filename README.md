@@ -81,7 +81,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 5 | 🚀 CI/CD Pipeline & DevOps | [View report](./weekly-reports/29-03-2026-CI-Pipeline.md) |
 | 6 | 🚀 DevEx & SPACE | *Coming soon* |
 | 7 | ⚙️ Technical Debt in Processes | *Coming soon* |
-| 8 | 🏛️ Technical Debt in Architecture | *Coming soon* |
+| 8 | 🏛️ Technical Debt in Architecture | [View report](./weekly-reports/19-04-2026-ArchitecturalSmells.md) |
 
 ---
 
@@ -159,9 +159,9 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 #### 8. 🏛️ Technical Debt in Architecture
 
-> Structural analysis of the system's architecture: layer violations, absence of architectural patterns, circular dependencies, inter-module coupling, and improvement proposals.
+> Architectural review of the current unified system, documenting structural smells such as missing service boundaries, dependency concentration around shared components, business logic inside DAOs, duplicated use-case flows, and environment-coupled configuration.
 >
-> 📎 _Coming soon_
+> 📎 [19-04-2026-ArchitecturalSmells.md](./weekly-reports/19-04-2026-ArchitecturalSmells.md)
 
 ---
 
