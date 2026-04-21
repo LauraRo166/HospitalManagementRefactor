@@ -8,6 +8,11 @@
   <name>HospitalManagement Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
+	<properties>
+		<sonar.organization>csdt-eci</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
+
   <!--
    ***** pom stands for Project Object Model *****
   -->
@@ -62,6 +67,14 @@
 		<version>1.2</version>
 	</dependency>
 
+<!-- 	javax.servlet-api for HttpServletRequest and HttpSession -->
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+		<scope>provided</scope>
+	</dependency>
+
 <!-- 	hibernate core -->
 	<dependency>
 	    <groupId>org.hibernate</groupId>
@@ -112,6 +125,13 @@
 	    <version>0.3m</version>
 	</dependency>
 
+<!-- SonarQube Maven Plugin for code analysis -->
+	<dependency>
+		<groupId>org.sonarsource.scanner.maven</groupId>
+		<artifactId>sonar-maven-plugin</artifactId>
+		<version>3.9.1.2184</version>
+	</dependency>
+
   </dependencies>
 
   <profiles>
@@ -132,6 +152,7 @@
 						</execution>
 						<execution>
 							<id>report</id>
+							<phase>verify</phase>
 							<goals>
 								<goal>report</goal>
 							</goals>

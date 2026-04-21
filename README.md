@@ -76,11 +76,12 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 0 | 📄 Original README | [View report](./weekly-reports/11-02-2026-READMEoriginal.md) |
 | 1 | 🚨 Code Smells & Refactoring Proposals | [View report](./weekly-reports/13-02-2026-CodeSmells.md) |
 | 2 | 🧹 Clean Code & XP Practices | [View report](./weekly-reports/22-02-2026-CleanCode.md) |
-| 3 | 🧪 Testing Debt | [View report](weekly-reports/15-03-2026-TestingDebt.md) |
+| 3 | 🧪 Testing Debt | [View report](./weekly-reports/15-03-2026-TestingDebt.md) |
 | 4 | 📊 Static Analysis | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md) |
-| 5 | 🚀 DevEx & SPACE | [View SPACE report](./weekly-reports/22-03-2026-SPACE_Report.md) |
-| 6 | ⚙️ Technical Debt in Processes | *Coming soon* |
-| 7 | 🏛️ Technical Debt in Architecture | *Coming soon* |
+| 5 | 🚀 CI/CD Pipeline & DevOps | [View report](./weekly-reports/29-03-2026-CI-Pipeline.md) |
+| 6 | 🚀 DevEx & SPACE | [View SPACE report](./weekly-reports/22-03-2026-SPACE_Report.md) |
+| 7 | ⚙️ Technical Debt in Processes | *Coming soon* |
+| 8 | 🏛️ Technical Debt in Architecture | *Coming soon* |
 
 ---
 
@@ -128,18 +129,26 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 > Static code analysis using tools such as SonarQube, Checkstyle, or SpotBugs. Report on quality metrics, cyclomatic complexity, and rule violations.
 >
-> 📎 [15-03-2026-staticAnalysis.md](./weekly-reports/15-03-2026-StaticAnalysis.md)
+> 📎 [15-03-2026-StaticAnalysis.md](./weekly-reports/15-03-2026-StaticAnalysis.md)
 
 ---
 
-#### 5. 🚀 DevEx & SPACE
+#### 5. 🚀 CI/CD Pipeline & DevOps
+
+> Implementation of CI/CD pipeline automation using GitHub Actions. Documents the creation of automated workflows and the implementation of a bot that comments PR status reports, providing immediate feedback to developers on build, test, and code analysis results.
+>
+> 📎 [29-03-2026-CI-Pipeline.md](./weekly-reports/29-03-2026-CI-Pipeline.md)
+
+---
+
+#### 6. 🚀 DevEx & SPACE
 
 > Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
 >
 > 📎 [22-03-2026-SPACE_Report.md](./weekly-reports/22-03-2026-SPACE_Report.md) (SPACE Analysis)
 ---
 
-#### 6. ⚙️ Technical Debt in Processes
+#### 7. ⚙️ Technical Debt in Processes
 
 > Identification of technical debt in development processes: lack of CI/CD, absence of formal code reviews, dependency management, process documentation, etc.
 >
@@ -147,7 +156,7 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 ---
 
-#### 7. 🏛️ Technical Debt in Architecture
+#### 8. 🏛️ Technical Debt in Architecture
 
 > Structural analysis of the system's architecture: layer violations, absence of architectural patterns, circular dependencies, inter-module coupling, and improvement proposals.
 >
