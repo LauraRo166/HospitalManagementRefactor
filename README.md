@@ -79,9 +79,8 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 | 3 | 🧪 Testing Debt | [View report](./weekly-reports/15-03-2026-TestingDebt.md) |
 | 4 | 📊 Static Analysis | [View report](./weekly-reports/15-03-2026-StaticAnalysis.md) |
 | 5 | 🚀 CI/CD Pipeline & DevOps | [View report](./weekly-reports/29-03-2026-CI-Pipeline.md) |
-| 6 | 🚀 DevEx & SPACE | [View SPACE report](./weekly-reports/22-03-2026-SPACE_Report.md) |
-| 7 | ⚙️ Technical Debt in Processes | *Coming soon* |
-| 8 | 🏛️ Technical Debt in Architecture | [View report](./weekly-reports/19-04-2026-ArchitecturalSmells.md) |
+| 6 | 🚀 DevEx & SPACE | [View DevEx report](./weekly-reports/22-03-2026-DevExAnalysis.md) <br> [View SPACE report](./weekly-reports/22-03-2026-SPACE_Report.md) |
+| 7 | 🏛️ Technical Debt in Architecture | [View report](./weekly-reports/19-04-2026-ArchitecturalSmells.md) |
 
 ---
 
@@ -145,18 +144,14 @@ This fork has an academic purpose: **iterative analysis and improvement of the t
 
 > Analysis of Developer Experience (DevEx) and the SPACE framework (Satisfaction, Performance, Activity, Communication, Efficiency) applied to the team and project.
 >
+> DevEx analysis identifies friction points and facilitators in the development experience, while SPACE analysis evaluates team satisfaction, performance metrics, activity levels, communication patterns, and efficiency indicators.
+>
+> 📎 [22-03-2026-DevExAnalysis.md](./weekly-reports/22-03-2026-DevExAnalysis.md) (DevEx Analysis)
+>
 > 📎 [22-03-2026-SPACE_Report.md](./weekly-reports/22-03-2026-SPACE_Report.md) (SPACE Analysis)
 ---
 
-#### 7. ⚙️ Technical Debt in Processes
-
-> Identification of technical debt in development processes: lack of CI/CD, absence of formal code reviews, dependency management, process documentation, etc.
->
-> 📎 _Coming soon_
-
----
-
-#### 8. 🏛️ Technical Debt in Architecture
+#### 7. 🏛️ Technical Debt in Architecture
 
 > Architectural review of the current unified system, documenting structural smells such as missing service boundaries, dependency concentration around shared components, business logic inside DAOs, duplicated use-case flows, and environment-coupled configuration.
 >
