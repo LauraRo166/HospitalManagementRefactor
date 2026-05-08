@@ -153,6 +153,18 @@ a{color:var(--purple)}
 .fi{opacity:0;transform:translateY(22px)}
 .fi.vis{opacity:1;transform:none;transition:opacity .6s,transform .6s}
 
+/* QR MODAL */
+.qr-btn{margin-left:.5rem;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.35rem .8rem;cursor:pointer;font-size:.75rem;color:var(--muted);transition:all .2s;white-space:nowrap;font-family:inherit}
+.qr-btn:hover{border-color:var(--purple);color:var(--purple)}
+.qr-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.qr-overlay.open{display:flex}
+.qr-modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 2.5rem;text-align:center;box-shadow:var(--shadow);max-width:340px;width:90%}
+.qr-modal h3{font-size:1rem;margin-bottom:.3rem}
+.qr-modal p{font-size:.75rem;color:var(--muted);margin-bottom:1.2rem;word-break:break-all}
+#qr-canvas{display:flex;justify-content:center;margin-bottom:1.2rem}
+#qr-canvas canvas,#qr-canvas img{border-radius:8px;border:6px solid #fff}
+.qr-close{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:.5rem 1.5rem;cursor:pointer;font-size:.85rem;font-family:inherit}
+
 /* ===== REPORTES ===== */
 .reports-layout{display:grid;grid-template-columns:270px 1fr;min-height:calc(100vh - 52px)}
 @media(max-width:780px){.reports-layout{grid-template-columns:1fr}}
@@ -212,8 +224,19 @@ a{color:var(--purple)}
     <button class="nav-btn active" onclick="switchSection('expo')">Resumen</button>
     <button class="nav-btn" onclick="switchSection('reports')">Reportes</button>
   </div>
+  <button class="qr-btn" onclick="openQR()">QR 📱</button>
   <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
 </nav>
+
+<!-- QR MODAL -->
+<div class="qr-overlay" id="qrOverlay" onclick="closeQR(event)">
+  <div class="qr-modal">
+    <h3>Escanea para abrir</h3>
+    <p>lauraro166.github.io/HospitalManagementRefactor/</p>
+    <div id="qr-canvas"></div>
+    <button class="qr-close" onclick="closeQR()">Cerrar</button>
+  </div>
+</div>
 
 <!-- ========== SECCIÓN 1: RESUMEN ========== -->
 <div id="sec-expo" class="section active">
@@ -2042,6 +2065,7 @@ application-prod.properties
 </script>
 
 <!-- ========== EXTERNAL SCRIPTS ========== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
@@ -2049,6 +2073,25 @@ application-prod.properties
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 
 <script>
+/* ===== QR ===== */
+let qrGenerated = false;
+function openQR() {
+  document.getElementById('qrOverlay').classList.add('open');
+  if (!qrGenerated) {
+    new QRCode(document.getElementById('qr-canvas'), {
+      text: 'https://lauraro166.github.io/HospitalManagementRefactor/',
+      width: 220, height: 220,
+      colorDark: '#000', colorLight: '#fff',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+    qrGenerated = true;
+  }
+}
+function closeQR(e) {
+  if (!e || e.target === document.getElementById('qrOverlay') || e.target.classList.contains('qr-close'))
+    document.getElementById('qrOverlay').classList.remove('open');
+}
+
 /* ===== THEME ===== */
 const root = document.documentElement;
 const HLJS_DARK  = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css';
