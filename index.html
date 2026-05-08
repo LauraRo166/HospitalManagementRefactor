@@ -4,16 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HospitalManagementRefactor — Calidad de Software</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <style>
 :root{
   --red:#E24B4A;--green:#1D9E75;--amber:#EF9F27;--purple:#534AB7;--teal:#0F6E56;
   --bg:#0f1117;--surface:#1a1d27;--surface2:#252836;--border:rgba(255,255,255,.08);
   --text:#e8eaf0;--muted:#8b91aa;--r:12px;--shadow:0 4px 24px rgba(0,0,0,.4);
+  --code-bg:#0d1117;--code-border:rgba(255,255,255,.08);
+  --code-hdr-antes:rgba(226,75,74,.18);--code-hdr-antes-txt:#ff7b7a;
+  --code-hdr-despues:rgba(29,158,117,.18);--code-hdr-despues-txt:#3ecf9a;
+  --inline-code-bg:#1e2130;--inline-code-txt:#c9d1d9;
 }
 [data-theme=light]{
   --bg:#f5f7fa;--surface:#fff;--surface2:#eef0f6;--border:rgba(0,0,0,.1);
   --text:#1a1d27;--muted:#5a607a;--shadow:0 4px 24px rgba(0,0,0,.08);
+  --code-bg:#f6f8fa;--code-border:rgba(0,0,0,.12);
+  --code-hdr-antes:rgba(226,75,74,.1);--code-hdr-antes-txt:#c0392b;
+  --code-hdr-despues:rgba(29,158,117,.1);--code-hdr-despues-txt:#0F6E56;
+  --inline-code-bg:#eef0f6;--inline-code-txt:#1a1d27;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -65,12 +73,12 @@ a{color:var(--purple)}
 /* CODE SPLIT */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.8rem 0}
 @media(max-width:680px){.split{grid-template-columns:1fr}}
-.code-card{background:#0d1117;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden}
+.code-card{background:var(--code-bg);border:1px solid var(--code-border);border-radius:var(--r);overflow:hidden}
 .code-card-hdr{padding:.65rem 1rem;font-size:.75rem;font-weight:700;display:flex;align-items:center;gap:.4rem}
-.antes .code-card-hdr{background:rgba(226,75,74,.18);color:#ff7b7a}
-.despues .code-card-hdr{background:rgba(29,158,117,.18);color:#3ecf9a}
-.code-card pre{margin:0;font-size:.72rem;max-height:360px;overflow-y:auto;background:#0d1117}
-.code-card pre code.hljs{padding:1rem;background:#0d1117}
+.antes .code-card-hdr{background:var(--code-hdr-antes);color:var(--code-hdr-antes-txt)}
+.despues .code-card-hdr{background:var(--code-hdr-despues);color:var(--code-hdr-despues-txt)}
+.code-card pre{margin:0;font-size:.72rem;max-height:360px;overflow-y:auto;background:var(--code-bg)}
+.code-card pre code.hljs{padding:1rem;background:var(--code-bg)}
 
 /* BADGES */
 .badges{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin:1.5rem 0}
@@ -95,7 +103,7 @@ a{color:var(--purple)}
 
 /* CALLOUT */
 .callout{background:rgba(29,158,117,.08);border-left:3px solid var(--green);border-radius:8px;padding:.9rem 1.3rem;margin:1.2rem 0;font-size:.88rem}
-.callout code{background:#1e2130;color:#c9d1d9;padding:.1rem .4rem;border-radius:4px;font-family:monospace;font-size:.82rem}
+.callout code{background:var(--inline-code-bg);color:var(--inline-code-txt);padding:.1rem .4rem;border-radius:4px;font-family:monospace;font-size:.82rem}
 
 /* PIPELINE */
 .pipeline{display:flex;align-items:center;overflow-x:auto;padding:1.2rem 0;gap:0;margin:1.5rem 0}
@@ -167,9 +175,9 @@ a{color:var(--purple)}
 .md-body p{margin-bottom:.9rem;font-size:.88rem}
 .md-body ul,.md-body ol{margin-bottom:.9rem;padding-left:1.4rem;font-size:.88rem}
 .md-body li{margin-bottom:.25rem}
-.md-body pre{border-radius:8px;overflow-x:auto;margin:1rem 0;font-size:.75rem;background:#0d1117;border:1px solid rgba(255,255,255,.07)}
-.md-body pre code.hljs{background:#0d1117}
-.md-body code:not(pre code){background:#1e2130;color:#c9d1d9;padding:.1rem .4rem;border-radius:4px;font-size:.8rem;font-family:'Cascadia Code',monospace}
+.md-body pre{border-radius:8px;overflow-x:auto;margin:1rem 0;font-size:.75rem;background:var(--code-bg);border:1px solid var(--code-border)}
+.md-body pre code.hljs{background:var(--code-bg)}
+.md-body code:not(pre code){background:var(--inline-code-bg);color:var(--inline-code-txt);padding:.1rem .4rem;border-radius:4px;font-size:.8rem;font-family:'Cascadia Code',monospace}
 .md-body table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem}
 .md-body th{background:var(--surface2);padding:.5rem .7rem;text-align:left;border:1px solid var(--border);font-weight:600}
 .md-body td{padding:.45rem .7rem;border:1px solid var(--border)}
@@ -2043,10 +2051,13 @@ application-prod.properties
 <script>
 /* ===== THEME ===== */
 const root = document.documentElement;
+const HLJS_DARK  = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css';
+const HLJS_LIGHT = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css';
 function toggleTheme() {
   const t = root.dataset.theme === 'dark' ? 'light' : 'dark';
   root.dataset.theme = t;
   document.getElementById('themeBtn').textContent = t === 'dark' ? '🌙' : '☀️';
+  document.getElementById('hljs-theme').href = t === 'dark' ? HLJS_DARK : HLJS_LIGHT;
 }
 
 /* ===== SECTION SWITCH ===== */
