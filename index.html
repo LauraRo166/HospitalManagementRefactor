@@ -24,8 +24,8 @@
   --inline-code-bg:#eef0f6;--inline-code-txt:#1a1d27;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;transition:background .3s,color .3s;font-size:14px}
+html{scroll-behavior:smooth;font-size:20px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;transition:background .3s,color .3s}
 img{max-width:100%;border-radius:8px;display:block;margin:1rem auto}
 a{color:var(--purple)}
 
@@ -47,16 +47,16 @@ a{color:var(--purple)}
 
 /* HERO */
 .hero{min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem;background:radial-gradient(ellipse at 50% -10%,rgba(83,74,183,.2) 0%,transparent 65%)}
-.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;background:linear-gradient(130deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.6rem;line-height:1.15}
-.hero .hook{font-size:1.05rem;color:var(--muted);max-width:580px;margin:.8rem auto 1.5rem;font-style:italic}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;background:linear-gradient(130deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.6rem;line-height:1.15}
+.hero .hook{font-size:1.2rem;color:var(--muted);max-width:680px;margin:.8rem auto 1.5rem;font-style:italic}
 .team-pills{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
 .team-pill{padding:.25rem .85rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.78rem;color:var(--muted)}
 
 /* BLOCK */
 .block{padding:4.5rem 0}
 .block-alt{background:var(--surface)}
-.block-title{font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;text-align:center;margin-bottom:.4rem}
-.block-sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:2.5rem}
+.block-title{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;text-align:center;margin-bottom:.4rem}
+.block-sub{text-align:center;color:var(--muted);font-size:1rem;margin-bottom:2.5rem}
 .accent{color:var(--purple)}
 
 /* CONTEXT */
@@ -209,13 +209,13 @@ a{color:var(--purple)}
 <nav class="nav">
   <div class="nav-brand">HospitalManagementRefactor</div>
   <div class="nav-tabs">
-    <button class="nav-btn active" onclick="switchSection('expo')">Exposición</button>
+    <button class="nav-btn active" onclick="switchSection('expo')">Resumen</button>
     <button class="nav-btn" onclick="switchSection('reports')">Reportes</button>
   </div>
   <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
 </nav>
 
-<!-- ========== SECCIÓN 1: EXPOSICIÓN ========== -->
+<!-- ========== SECCIÓN 1: RESUMEN ========== -->
 <div id="sec-expo" class="section active">
 
   <!-- HERO -->
